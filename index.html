@@ -1,0 +1,3143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pursuit screen</title>
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Pursuit screen"><meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#E9EFF3"><link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAETklEQVR4nO3d0XETQRBF0TZFCiY1MjAxkYFJjSj4ECVUyG+90szs9uu+59uFZ3fu9Brbkl9e394D+MiXsxeAvIgDEnFAIg5IxAGJOCARByTigEQckIgDEnFAIg5IxAGJOCARByTigEQckIgDEnFAIg5IxAGJOCARByTigEQckIgDEnFA+nr2As70++f3PR/27cev1SvJ6aXbC6l3BqG0CqVLHINN3OtQSfE4pjdxr3AlZeM4IItbJRMpGMfBWdwqlki1/8qeWMbpn326OpMj1cbUGCFFJkeqMiLfep5TIY6cO5FzVQ/xfqxYbIDvI8Z4cliUET7rvOcah9cd91rtlWUcjvfacc2WceAYfnE4HsELu5WbxWF3f//jtX6nOLzurGJ0FU5x4GA2cRgduE+5XItHHC53cz+LK/KIA6cw+NnK6kO28bOPEz91Bn1fmrBnY64fY/EUmC775FixK0+f11SLOUC7rzlGNiPzRq7QK47x3W3VR+o45o7xWfs6t4/MX82kjmOiuTvaZH60iGPFXnboI28cs+btul2c9S+nfbLkjWOK1ee79vwoHgdGVI7jmGNdeHgkjSPtY3iRnNebNA5kUDaOI6d91SdL2TgwjjggEQck4oBEHJCIAxJxQCIOSGXjOPIb0jm/+T2ubBwYlzSOqt+QVnJeb9I4pjhm2ld9pkTtODCoeByrj3XhsRGZ48j/67v5fwV6UN44JlrRR+2ZcdEijpi9lx3KiORx5HzhYc4Xaa6QOo7pxve1ycy46BVHjO1uqzIi/5u3xLIteWieZ1jD8fq+7dN1v098T7DkDCZHFN2k5GMjGn7Ngf084sh/yB5lcUUecYTJ3dzJ5Vps4sDxnOJwOXDbjK7CKY6wurMf8lq/WRzhdn9v2a3cLw4cxjIOuyMYnmu2jCPc7rXXaq9c48ABjONwOY4u67xnHAdW844j/6HMv8IN3nFgKfs4Mh/NzGvbwz4OrFMhjpwHNOeqHlIhjsi3E9nW85wicWCFOnHkOax5VjKoThyYrlQcGY5shjXMUioOzFUtjnMPbqWxEfXiwEQF4zjr+BYbG1EyDsxSM47jD3G9sRFV48AUZePgr0OOKxsHxlWOgz9XPqhyHLF+5wqXEeXjwIj6caw73LXHRnSIA09rEceKI15+bESTOPCcLnHMPegdxkb0iQNPaBTHrOPeZGxEqzjwqF5xjB/6PmMjusWBh7SLY+Totxob0TAO7NcxjucGQLexET3jiMd3umEZ0TYO7NE3jv3DoOfYiM5x4FOt49gzEtqOjWgeB7Z1j2N7MHQeG0Ec2EAccjw0HxtBHNhAHBEfDQnGRhAHNhDHX7ejgrFxQRyQiOOfy8BgbFy9vL69n70GJMXkgEQckIgDEnFAIg5IxAGJOCARByTigEQckIgDEnFAIg5IxAGJOCARByTigEQckIgDEnFAIg5IxAGJOCARByTigEQckIgDEnFA+gO/awdYSpg+CAAAAABJRU5ErkJggg==">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --paper:#E9EFF3; --surface:#FFFFFF; --ink:#12293B; --ink2:#4B6276; --line:#C7D4DD;
+  --accent:#1566A8; --accent-ink:#FFFFFF; --accent-soft:#D9E9F6;
+  --go:#17794A; --go-bg:#D8EFE2; --warn:#8F5F00; --warn-bg:#F9EBC4; --stop:#B3302A; --stop-bg:#F6D9D5;
+  --idle:#6F8190; --idle-bg:#E0E7EC; --lamp-off:#B9C6CF;
+  --disp:"Barlow Condensed","Arial Narrow","Helvetica Neue",Arial,sans-serif;
+  --body:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  color-scheme:light;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0D1822; --surface:#16252F; --ink:#E5EEF4; --ink2:#9DB1C2; --line:#2B3F4E;
+    --accent:#62AEEA; --accent-ink:#06121C; --accent-soft:#1B3447;
+    --go:#55C98C; --go-bg:#173A29; --warn:#E8B64A; --warn-bg:#3C3115; --stop:#F08077; --stop-bg:#43211F;
+    --idle:#8DA0AF; --idle-bg:#23343F; --lamp-off:#3A4E5B; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0D1822; --surface:#16252F; --ink:#E5EEF4; --ink2:#9DB1C2; --line:#2B3F4E;
+  --accent:#62AEEA; --accent-ink:#06121C; --accent-soft:#1B3447;
+  --go:#55C98C; --go-bg:#173A29; --warn:#E8B64A; --warn-bg:#3C3115; --stop:#F08077; --stop-bg:#43211F;
+  --idle:#8DA0AF; --idle-bg:#23343F; --lamp-off:#3A4E5B; color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 15px/1.45 var(--body);min-height:100%}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--paper)}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.app{max-width:640px;margin:0 auto;min-height:100vh;padding-bottom:132px}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--paper);padding:14px 16px 10px;display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line)}
+header.top h1{margin:0;font:700 26px/1 var(--disp);letter-spacing:.01em}
+.sync{font-size:12px;color:var(--ink2);display:flex;align-items:center;gap:6px;white-space:nowrap}
+.sync i{width:8px;height:8px;border-radius:50%;background:var(--idle);display:inline-block}
+.sync.live i{background:var(--go)} .sync.warn i{background:var(--warn)}
+main{padding:12px 16px 0}
+.banner{background:var(--warn-bg);color:var(--warn);border-left:4px solid var(--warn);padding:10px 12px;margin:0 0 12px;font-size:13.5px}
+.banner.info{background:var(--accent-soft);color:var(--ink);border-left-color:var(--accent)}
+.seg{display:flex;border:1px solid var(--line);background:var(--surface);margin-bottom:10px}
+.seg button{flex:1;border:0;background:transparent;padding:9px 4px;font-size:13px;color:var(--ink2);border-right:1px solid var(--line);min-height:44px}
+.seg button:last-child{border-right:0}
+.seg button b{display:block;font:700 20px/1.05 var(--disp);color:var(--ink)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)} .seg button[aria-pressed="true"] b{color:var(--paper)}
+.list{list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--line)}
+.row{display:grid;grid-template-columns:6px 1fr;gap:0 12px;width:100%;text-align:left;border:0;border-bottom:1px solid var(--line);background:transparent;padding:0;min-height:76px;position:relative}
+.list li:last-child .row{border-bottom:0}
+.row .stripe{background:var(--idle)}
+.row.go .stripe{background:var(--go)} .row.conditional .stripe{background:var(--warn)} .row.no-go .stripe{background:var(--stop)}
+.row .mid{padding:11px 14px 11px 0}
+.row .hd{padding-right:92px}
+.office-btn{display:block;width:100%;text-align:left;border:0;background:transparent;padding:0;min-height:44px}
+.row .nm{font:600 20px/1.1 var(--disp);letter-spacing:.01em;margin:0 0 2px}
+.row .sub{font-size:13px;color:var(--ink2);margin:0 0 7px}
+.row .sc{position:absolute;top:11px;right:14px;text-align:right}
+.row .sc b{display:block;font:700 30px/1 var(--disp)} .row .sc span{font-size:12px;color:var(--ink2)}
+.lamps{display:flex;gap:12px;flex-wrap:wrap;margin-top:3px}
+.lamp{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--ink2)}
+.lamp i{width:12px;height:12px;border-radius:50%;background:var(--lamp-off);display:inline-block;box-shadow:inset 0 0 0 1px rgba(0,0,0,.18)}
+.lamp.pass i{background:var(--go);box-shadow:0 0 0 3px var(--go-bg)}
+.lamp.warn i{background:var(--warn);box-shadow:0 0 0 3px var(--warn-bg)}
+.lamp.fail i{background:var(--stop);box-shadow:0 0 0 3px var(--stop-bg)}
+.chip{display:inline-block;white-space:nowrap;padding:2px 9px;font:600 14px/1.4 var(--disp);letter-spacing:.02em;background:var(--idle-bg);color:var(--ink)}
+.chip.go{background:var(--go-bg);color:var(--go)} .chip.conditional{background:var(--warn-bg);color:var(--warn)} .chip.no-go{background:var(--stop-bg);color:var(--stop)}
+.empty{padding:28px 18px;text-align:center;color:var(--ink2);background:var(--surface);border:1px dashed var(--line)}
+.empty h2{font:600 22px/1.1 var(--disp);color:var(--ink);margin:0 0 6px}
+nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--surface);border-top:1px solid var(--line);padding:0 0 env(safe-area-inset-bottom,0px)}
+nav.tabs div{max-width:640px;margin:0 auto;display:flex}
+nav.tabs button{flex:1;border:0;background:transparent;padding:8px 2px 7px;font-size:12px;color:var(--ink2);display:flex;flex-direction:column;align-items:center;gap:2px;min-height:56px}
+nav.tabs button svg{width:22px;height:22px}
+nav.tabs button[aria-current="page"]{color:var(--accent);font-weight:600}
+.fab{position:fixed;right:16px;bottom:calc(72px + env(safe-area-inset-bottom,0px));z-index:31;display:flex;align-items:center;gap:8px;border:0;background:var(--accent);color:var(--accent-ink);padding:0 18px 0 14px;min-height:52px;font:600 18px/1 var(--disp);letter-spacing:.02em;box-shadow:0 6px 18px rgba(10,30,50,.28)}
+.fab svg{width:22px;height:22px}
+.sheet-wrap{position:fixed;inset:0;z-index:50;background:rgba(8,20,30,.55);display:flex;justify-content:center;align-items:flex-end}
+.sheet{background:var(--paper);width:100%;max-width:640px;max-height:96%;height:96%;display:flex;flex-direction:column;border-top:3px solid var(--accent)}
+@media (prefers-reduced-motion: no-preference){ .sheet{animation:rise .18s ease-out} @keyframes rise{from{transform:translateY(24px);opacity:.6}to{transform:none;opacity:1}} }
+.sheet-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--surface)}
+.sheet-head h2{margin:0;font:700 22px/1.1 var(--disp)}
+.x{border:0;background:transparent;width:44px;height:44px;margin:-8px -10px -8px 0;display:grid;place-items:center;color:var(--ink2)} .x svg{width:22px;height:22px}
+.sheet-body{overflow:auto;padding:14px 16px 24px;flex:1;-webkit-overflow-scrolling:touch}
+.sheet-foot{border-top:1px solid var(--line);background:var(--surface);padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px))}
+h3.sec{font:600 18px/1.1 var(--disp);margin:20px 0 8px;letter-spacing:.02em}
+h3.sec:first-child{margin-top:2px}
+.note{font-size:13px;color:var(--ink2);margin:4px 0 0}
+.fld{display:block;margin:0 0 12px}
+.fld>span{display:block;font-size:13px;font-weight:600;margin:0 0 4px}
+.fld input,.fld select,.fld textarea{width:100%;max-width:100%;border:1px solid var(--line);background:var(--surface);padding:10px 11px;min-height:46px;border-radius:0}
+.fld textarea{min-height:64px;resize:vertical}
+.fld small{display:block;font-size:12px;color:var(--ink2);margin-top:3px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 10px}
+.btn{border:1px solid var(--ink);background:transparent;padding:0 14px;min-height:46px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;color:var(--ink)}
+.btn svg{width:18px;height:18px}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.danger{border-color:var(--stop);color:var(--stop)} .btn.danger.armed{background:var(--stop);color:#fff}
+.btn.block{width:100%} .btn[disabled]{opacity:.5;cursor:default}
+.pin-status{padding:9px 11px;margin:0 0 12px;font-size:13.5px;background:var(--idle-bg)}
+.pin-status.ok{background:var(--go-bg);color:var(--go)} .pin-status.bad{background:var(--stop-bg);color:var(--stop)}
+.preview{display:flex;gap:12px;align-items:center}
+.preview .big{font:700 30px/1 var(--disp);min-width:72px;flex:none}
+.preview p{margin:0;font-size:13px;color:var(--ink2)}
+.kv{display:grid;grid-template-columns:1fr auto;gap:0;margin:0;border-top:1px solid var(--line)}
+.kv dt,.kv dd{margin:0;padding:8px 0;border-bottom:1px solid var(--line);font-size:14px} .kv dt{color:var(--ink2)} .kv dd{text-align:right;font-weight:600}
+.verdict-big{display:flex;align-items:baseline;gap:12px;margin:0 0 6px}
+.verdict-big b{font:700 40px/1 var(--disp)} .verdict-big span{font-size:14px;color:var(--ink2)}
+.verdict-big.go b{color:var(--go)} .verdict-big.conditional b{color:var(--warn)} .verdict-big.no-go b{color:var(--stop)}
+.gates{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);background:var(--surface);margin:12px 0}
+.gate{padding:10px 12px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)} .gate:nth-child(2n){border-right:0} .gate:nth-child(n+3){border-bottom:0}
+.gate .lamp{font-size:14px;font-weight:600;color:var(--ink)} .gate p{margin:3px 0 0 17px;font-size:13px;color:var(--ink2)}
+ul.acts{margin:0;padding:0;list-style:none} ul.acts li{padding:9px 0 9px 14px;border-left:3px solid var(--accent);margin:0 0 8px;background:var(--surface);padding-right:12px}
+ul.why{margin:0;padding-left:18px;color:var(--ink2);font-size:14px}
+.card-list{background:var(--surface);border:1px solid var(--line);margin:0 0 12px}
+.card-list>div{padding:12px 14px;border-bottom:1px solid var(--line)} .card-list>div:last-child{border-bottom:0}
+.card-list h4{margin:0 0 3px;font:600 20px/1.1 var(--disp)}
+.lvl{border-left:5px solid var(--idle)} .lvl.office,.lvl.team,.lvl.hire{border-left-color:var(--accent)} .lvl.short,.lvl.small{border-left-color:var(--warn)}
+.stats{display:flex;gap:16px;flex-wrap:wrap;margin:6px 0 0;font-size:13px;color:var(--ink2)} .stats b{color:var(--ink);font-weight:600}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);background:var(--surface);margin:0 0 14px}
+.kpis div{padding:10px 12px;border-right:1px solid var(--line)} .kpis div:last-child{border-right:0}
+.kpis b{display:block;font:700 28px/1 var(--disp)} .kpis span{font-size:12px;color:var(--ink2)}
+details.grp{background:var(--surface);border:1px solid var(--line);margin:0 0 10px}
+details.grp summary{padding:0 14px;font:600 18px/1.1 var(--disp);cursor:pointer;min-height:48px;list-style:none;display:flex;align-items:center;justify-content:space-between}
+details.grp summary::after{content:"+";font:500 22px/1 var(--body);color:var(--ink2)}
+details.grp[open] summary::after{content:"\2212"}
+details.grp summary::-webkit-details-marker{display:none}
+details.grp .in{padding:4px 14px 8px;border-top:1px solid var(--line)}
+.mapbox{background:var(--surface);border:1px solid var(--line);margin:0 0 10px}
+.mapbox svg{display:block;width:100%;height:auto}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--ink2);margin:6px 0 0}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(132px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--paper);padding:10px 16px;z-index:70;font-size:14px;max-width:90%}
+@media (min-width:700px){ .sheet{height:90%;max-height:900px;margin-bottom:4vh} .sheet-wrap{align-items:center} }
+</style>
+</head>
+<body>
+<div class="app" id="app">
+  <header class="top"><h1>Pursuit screen</h1><div class="sync" id="sync" role="status"><i></i><span>Connecting</span></div></header>
+  <main id="main"><div class="empty"><h2>Loading shared data</h2><p>Offices, assumptions and pursuits load from the team’s shared copy.</p></div></main>
+</div>
+<button class="fab" id="fab" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg>Drop a pin</button>
+<nav class="tabs" aria-label="Sections"><div id="tabs"></div></nav>
+<div id="sheetHost"></div>
+<div id="toastHost" aria-live="polite"></div>
+
+<script>
+/* ---------- Pursuit Screen engine: mirrors the Excel model ---------- */
+const DEFAULT_ASSUMPTIONS = {
+  speed: 45, circ: 1.3, mobil: 0.5,
+  prod: 1600, ucomf: 0.70, umid: 0.80, umax: 0.85,
+  rot: 5, rotmin: 3,
+  loaded: 75, mile: 0.8, ahhrs: 3.5, prem: 1.5, alloc: 250,
+  tgt: 0.30, walk: 0.10, band: 0.10,
+  wprox: 30, wcap: 30, won: 15, wmar: 25,
+  pb1: 0.5, pf1: 1, pb2: 0.75, pf2: 0.7, pb3: 1, pf3: 0.4,
+  cf2: 0.65, cf3: 0.35, mf2: 0.7, mf3: 0.3,
+  go: 75, cond: 60,
+  expandMin: 3, officeMin: 8, clusterR: 60, local: 0.5, officeFixed: 300000, satFixed: 50000
+};
+const DEFAULT_TIERS = [
+  { name: "A - Time & Material", target: 0, after: 0 },
+  { name: "B - Phone & Remote", target: 0, after: 0 },
+  { name: "C - Preferred", target: 4, after: 1 },
+  { name: "D - Premier", target: 2, after: 1 }
+];
+
+const num = (v) => (v === null || v === undefined || v === "" || isNaN(Number(v))) ? 0 : Number(v);
+const has = (v) => v !== null && v !== undefined && v !== "" && !isNaN(Number(v));
+const rad = (d) => d * Math.PI / 180;
+
+function roadMiles(a, lat1, lon1, lat2, lon2) {
+  const h = Math.sin(rad(lat2 - lat1) / 2) ** 2 +
+    Math.cos(rad(lat1)) * Math.cos(rad(lat2)) * Math.sin(rad(lon2 - lon1) / 2) ** 2;
+  return 3959 * 2 * Math.asin(Math.sqrt(h)) * a.circ;
+}
+
+function tierInfo(S, tierName) {
+  const t = S.tiers.find((x) => x.name === tierName);
+  return t ? { target: num(t.target), after: num(t.after) } : { target: 0, after: 0 };
+}
+
+/* Evaluate one pursuit against the offices. Does not need other pursuits. */
+function evalPursuit(S, p) {
+  const A = S.A, offs = S.offices.filter((o) => o.name && has(o.lat) && has(o.lon));
+  const r = { p, ok: false };
+  const mech = num(p.mech), ctrl = num(p.ctrl), pm = num(p.pm), corr = num(p.corr), calls = num(p.calls);
+  const rev = num(p.rev), other = num(p.other), strat = num(p.strat);
+  const ti = tierInfo(S, p.tier);
+  const target = has(p.rfp) ? num(p.rfp) : ti.target;
+  const allowed = target > 0 ? Math.max(0, target - A.mobil) : null;
+  const ahReq = (p.ah === "Yes") ? 1 : (p.ah === "No") ? 0 : ti.after;
+  r.target = target; r.allowed = allowed; r.ahReq = ahReq === 1;
+  r.hasCoords = has(p.lat) && has(p.lon) && offs.length > 0;
+  r.actions = []; r.findings = [];
+  if (!r.hasCoords) {
+    r.g1 = "NO COORDS"; r.g2 = "NO COORDS"; r.g3 = "N/A"; r.g4 = "NO DATA";
+    r.rec = "INCOMPLETE DATA"; r.score = 0; r.gap = "";
+    r.actions.push(offs.length === 0 ? "Add at least one office with coordinates in Setup." : "Add the site location by pasting a map link or coordinates.");
+    return r;
+  }
+  const split = (mech + ctrl) > 0 ? mech / (mech + ctrl) : 0;
+  const splitC = (mech + ctrl) > 0 ? ctrl / (mech + ctrl) : 0;
+  // per-office fit
+  const fits = offs.map((o, j) => {
+    const miles = roadMiles(A, num(p.lat), num(p.lon), num(o.lat), num(o.lon));
+    const hrs = miles / A.speed;
+    const inRange = target === 0 ? 1 : (hrs <= allowed ? 1 : 0);
+    const Z = (pm + corr) * 2 * hrs;
+    const mHP = mech > 0 ? Math.max(0, Math.ceil((num(o.cm) + mech + Z * split) / (A.prod * A.umax)) - num(o.mech), ahReq ? A.rotmin - num(o.mech) : 0) : 0;
+    const cHP = ctrl > 0 ? Math.max(0, Math.ceil((num(o.cc) + ctrl + Z * splitC) / (A.prod * A.umax)) - num(o.ctrl), ahReq ? A.rotmin - num(o.ctrl) : 0) : 0;
+    return { o, j, miles, hrs, inRange, metric: inRange ? (mHP + cHP) * 1000 + miles : null };
+  });
+  const inr = fits.filter((f) => f.metric !== null);
+  r.inRangeCount = target === 0 ? fits.length : fits.filter((f) => f.inRange === 1).length;
+  const nearest = fits.reduce((a, b) => (b.miles < a.miles ? b : a));
+  const serve = inr.length ? inr.reduce((a, b) => (b.metric < a.metric ? b : a)) : nearest;
+  const o = serve.o;
+  r.office = o.name; r.miles = serve.miles; r.hrs = serve.hrs; r.nearest = nearest.o.name;
+  const Z = (pm + corr) * 2 * serve.hrs;
+  const AA = (mech + ctrl) === 0 ? 0 : mech + Z * split;
+  const AB = (mech + ctrl) === 0 ? 0 : ctrl + Z * splitC;
+  r.AA = AA; r.AB = AB;
+  // gate 1
+  r.g1 = target === 0 ? "N/A" : (serve.hrs <= allowed ? "PASS" : "FAIL");
+  // gate 2
+  r.mutil = mech > 0 ? (num(o.mech) === 0 ? 9.99 : (num(o.cm) + AA) / (num(o.mech) * A.prod)) : null;
+  r.cutil = ctrl > 0 ? (num(o.ctrl) === 0 ? 9.99 : (num(o.cc) + AB) / (num(o.ctrl) * A.prod)) : null;
+  const umaxv = Math.max(r.mutil ?? 0, r.cutil ?? 0);
+  r.util = umaxv;
+  r.g2 = umaxv <= A.umax ? "PASS" : "FAIL";
+  // gate 3
+  const d = Math.min(mech > 0 ? num(o.mech) : 999, ctrl > 0 ? num(o.ctrl) : 999);
+  r.depth = d === 999 ? null : d;
+  r.g3 = !r.ahReq ? "N/A" : r.depth === null ? "N/A" : r.depth >= A.rot ? "PASS" : r.depth >= A.rotmin ? "SUPPLEMENT" : "FAIL";
+  // cost / margin
+  const trips = pm + corr + calls;
+  r.cost = (mech + ctrl) * A.loaded + trips * (2 * serve.hrs * A.loaded + 2 * serve.miles * A.mile) +
+    calls * A.ahhrs * A.loaded * A.prem + calls * A.alloc + other;
+  r.margin = rev > 0 ? (rev - r.cost) / rev : null;
+  r.g4 = r.margin === null ? "NO DATA" : r.margin >= A.walk ? "PASS" : "FAIL";
+  // points
+  const ratio = (allowed && allowed > 0) ? serve.hrs / allowed : null;
+  r.ppts = r.g1 === "N/A" ? A.wprox : (allowed === 0 ? 0 : A.wprox * (ratio <= A.pb1 ? A.pf1 : ratio <= A.pb2 ? A.pf2 : ratio <= A.pb3 ? A.pf3 : 0));
+  r.cpts = A.wcap * (umaxv <= A.ucomf ? 1 : umaxv <= A.umid ? A.cf2 : umaxv <= A.umax ? A.cf3 : 0);
+  r.opts = (r.g3 === "PASS" || r.g3 === "N/A") ? A.won : r.g3 === "SUPPLEMENT" ? A.won * 0.5 : 0;
+  r.mpts = r.margin === null ? 0 : A.wmar * (r.margin >= A.tgt + A.band ? 1 : r.margin >= A.tgt ? A.mf2 : r.margin >= A.tgt - A.band ? A.mf3 : 0);
+  r.strat = strat;
+  r.score = Math.max(0, Math.min(100, r.ppts + r.cpts + r.opts + r.mpts + strat));
+  const anyFail = [r.g1, r.g2, r.g3, r.g4].includes("FAIL");
+  r.rec = r.g4 === "NO DATA" ? "INCOMPLETE DATA" : anyFail ? "NO-GO" : (r.score >= A.go && r.g3 !== "SUPPLEMENT") ? "GO" : r.score >= A.cond ? "CONDITIONAL" : "NO-GO";
+  // hires
+  const skip = r.g1 === "FAIL";
+  const hire = (hrsC, hrsAdd, techs, util, rotTarget, need) => need > 0
+    ? Math.max(0, Math.ceil((hrsC + hrsAdd) / (A.prod * util)) - techs, r.ahReq ? rotTarget - techs : 0) : 0;
+  r.hpm = skip ? null : hire(num(o.cm), AA, num(o.mech), A.umax, A.rotmin, mech);
+  r.hpc = skip ? null : hire(num(o.cc), AB, num(o.ctrl), A.umax, A.rotmin, ctrl);
+  r.hsm = skip ? null : hire(num(o.cm), AA, num(o.mech), A.ucomf, A.rot, mech);
+  r.hsc = skip ? null : hire(num(o.cc), AB, num(o.ctrl), A.ucomf, A.rot, ctrl);
+  r.revneed = r.cost / (1 - A.tgt);
+  r.pricepct = rev > 0 ? Math.max(0, r.revneed / rev - 1) : null;
+  // local-base view
+  r.lcost = (mech + ctrl) * A.loaded + trips * (2 * A.local * A.loaded + 2 * A.local * A.speed * A.mile) +
+    calls * A.ahhrs * A.loaded * A.prem + calls * A.alloc + other;
+  r.lmargin = rev > 0 ? (rev - r.lcost) / rev : null;
+  r.gap = (r.g4 === "NO DATA") ? "" : r.g1 === "FAIL" ? ((r.lmargin !== null && r.lmargin >= A.walk) ? "RANGE" : "")
+    : (r.g4 === "PASS" && (r.g2 === "FAIL" || r.g3 === "FAIL" || r.g3 === "SUPPLEMENT")) ? "CAPACITY" : "";
+  // findings and actions (plain sentences)
+  const pct = (x) => Math.round(x * 100) + "%";
+  const money = (x) => "$" + Math.round(x).toLocaleString("en-US");
+  if (r.g1 === "FAIL") r.findings.push("Outside response range of every office: " + serve.hrs.toFixed(1) + " hr drive from " + o.name + " vs " + allowed.toFixed(1) + " hr allowed.");
+  if (r.g2 === "FAIL") r.findings.push("Over capacity at " + o.name + " (" + pct(umaxv) + " utilization after the win).");
+  if (r.g3 === "FAIL") r.findings.push("On-call rotation too thin (" + r.depth + " techs; need " + A.rotmin + "+).");
+  if (r.g3 === "SUPPLEMENT") r.findings.push("Thin rotation (" + r.depth + " techs vs " + A.rot + " ideal): needs a remote-only second tier.");
+  if (r.g4 === "FAIL") r.findings.push("Margin " + pct(r.margin) + " is below the walk-away level.");
+  if (r.g4 === "PASS" && r.margin < A.tgt) r.findings.push("Margin " + pct(r.margin) + " is below target.");
+  if (!r.findings.length) r.findings.push("All gates passed. Served from " + o.name + ".");
+  const cT = (S.tiers.find((x) => x.name === "C - Preferred") || { target: 4 }).target;
+  if (r.g1 === "FAIL") {
+    if (target > 0 && cT > target && serve.hrs <= cT - A.mobil)
+      r.actions.push("Re-scope as Preferred (" + cT + "-hr L1) if the customer accepts: the " + serve.hrs.toFixed(1) + " hr drive fits.");
+    else r.actions.push("Out of range of every office: needs a local team (see Growth) or offer remote-only Option B.");
+  }
+  const hl = (m, c) => [m > 0 ? m + " mechanic" + (m > 1 ? "s" : "") : "", c > 0 ? c + " controls technician" + (c > 1 ? "s" : "") : ""].filter(Boolean).join(" and ");
+  if (num(r.hpm) > 0 || num(r.hpc) > 0) r.actions.push("Hire " + hl(num(r.hpm), num(r.hpc)) + " at " + o.name + " to clear the gates.");
+  if (num(r.hsm) > num(r.hpm) || num(r.hsc) > num(r.hpc))
+    r.actions.push("In total, a comfortable fit (at most " + pct(A.ucomf) + " utilization, full rotation) needs " + hl(num(r.hsm), num(r.hsc)) + " at " + o.name + ".");
+  if (r.margin !== null && r.margin < A.tgt) r.actions.push("Reprice to about " + money(r.revneed) + " (+" + pct(r.pricepct) + ") to reach the target margin.");
+  if (r.gap === "RANGE") r.actions.push("Served from a local base the margin would be " + pct(r.lmargin) + ": this counts toward new-area demand on Growth.");
+  if (!r.actions.length) r.actions.push("Pursue as scoped. No improvement needed.");
+  r.ok = true;
+  return r;
+}
+
+/* Whole-portfolio evaluation: each pursuit plus the Growth Plan roll-ups. */
+function evalAll(S) {
+  const A = S.A;
+  const results = S.pursuits.map((p) => evalPursuit(S, p));
+  const offs = S.offices.filter((o) => o.name && has(o.lat) && has(o.lon));
+  const live = results.filter((r) => r.ok);
+
+  /* A. existing offices */
+  const planned = (techsHrs, util) => Math.ceil(techsHrs / (A.prod * util));
+  const officeRows = offs.map((o) => {
+    const mine = live.filter((r) => r.office === o.name);
+    const go = mine.filter((r) => r.rec === "GO");
+    const gap = mine.filter((r) => r.gap === "CAPACITY");
+    const sum = (arr, k) => arr.reduce((a, r) => a + num(r[k]), 0);
+    const row = {
+      name: o.name, mech: num(o.mech), ctrl: num(o.ctrl), goCount: go.length, gapCount: gap.length,
+      gapRev: gap.reduce((a, r) => a + num(r.p.rev), 0), gapProfit: gap.reduce((a, r) => a + num(r.p.rev) - num(r.cost), 0)
+    };
+    row.mechGo = planned(num(o.cm) + sum(go, "AA"), A.ucomf);
+    row.mechAll = planned(num(o.cm) + sum(go, "AA") + sum(gap, "AA"), A.ucomf);
+    row.ctrlGo = planned(num(o.cc) + sum(go, "AB"), A.ucomf);
+    row.ctrlAll = planned(num(o.cc) + sum(go, "AB") + sum(gap, "AB"), A.ucomf);
+    const rotM = gap.some((r) => r.ahReq && num(r.p.mech) > 0), rotC = gap.some((r) => r.ahReq && num(r.p.ctrl) > 0);
+    row.addMech = row.gapCount === 0 ? 0 : Math.max(0, Math.max(row.mechAll, rotM ? A.rot : 0) - Math.max(row.mech, row.mechGo));
+    row.addCtrl = row.gapCount === 0 ? 0 : Math.max(0, Math.max(row.ctrlAll, rotC ? A.rot : 0) - Math.max(row.ctrl, row.ctrlGo));
+    row.addTotal = row.addMech + row.addCtrl;
+    row.perHireRev = row.addTotal > 0 ? row.gapRev / row.addTotal : null;
+    row.perHireProfit = row.addTotal > 0 ? row.gapProfit / row.addTotal : null;
+    row.level = row.gapCount === 0 ? "none" : row.addTotal >= A.officeMin ? "office" : row.addTotal >= A.expandMin ? "hire" : row.addTotal >= 1 ? "small" : "absorb";
+    row.verdict = row.level === "none" ? "No staffing-gap demand"
+      : row.level === "office" ? "Full office case: " + row.addTotal + " added techs (" + row.addMech + " mechanic, " + row.addCtrl + " controls) is enough to merit a new office in this area."
+      : row.level === "hire" ? "Hire " + row.addTotal + " at " + o.name + " (" + row.addMech + " mechanic, " + row.addCtrl + " controls): justified."
+      : row.level === "small" ? "Hire " + row.addTotal + " as deals close; below the " + A.expandMin + "-hire trigger."
+      : "Existing staff can absorb the gap pursuits.";
+    return row;
+  });
+
+  /* B. out-of-range clusters */
+  const idxs = results.map((r, i) => (r.ok && r.gap === "RANGE") ? i : -1).filter((i) => i >= 0);
+  const D = (i, j) => roadMiles(A, num(results[i].p.lat), num(results[i].p.lon), num(results[j].p.lat), num(results[j].p.lon));
+  const a1 = {}, a2 = {}, a3 = {};
+  idxs.forEach((i) => { a1[i] = Math.min(...idxs.filter((j) => D(i, j) <= A.clusterR).map((j) => j + 1)); });
+  idxs.forEach((i) => { a2[i] = Math.min(...idxs.filter((j) => D(i, j) <= A.clusterR).map((j) => a1[j])); });
+  idxs.forEach((i) => { a3[i] = Math.min(...idxs.filter((j) => D(i, j) <= A.clusterR).map((j) => a2[j])); });
+  results.forEach((r, i) => { r.cluster = (i in a3) ? a3[i] : null; });
+  const keys = [...new Set(idxs.map((i) => a3[i]))].sort((a, b) => a - b);
+  const clusters = keys.map((k) => {
+    const mem = idxs.filter((i) => a3[i] === k).map((i) => results[i]);
+    const hrsM = mem.reduce((a, r) => { const p = r.p, t = num(p.mech) + num(p.ctrl); return a + (t === 0 ? 0 : num(p.mech) + (num(p.pm) + num(p.corr)) * 2 * A.local * num(p.mech) / t); }, 0);
+    const hrsC = mem.reduce((a, r) => { const p = r.p, t = num(p.mech) + num(p.ctrl); return a + (t === 0 ? 0 : num(p.ctrl) + (num(p.pm) + num(p.corr)) * 2 * A.local * num(p.ctrl) / t); }, 0);
+    const rev = mem.reduce((a, r) => a + num(r.p.rev), 0), lcost = mem.reduce((a, r) => a + r.lcost, 0);
+    const lat = mem.reduce((a, r) => a + num(r.p.lat), 0) / mem.length, lon = mem.reduce((a, r) => a + num(r.p.lon), 0) / mem.length;
+    let nearO = null, nearD = Infinity;
+    offs.forEach((o) => { const d = roadMiles(A, lat, lon, num(o.lat), num(o.lon)); if (d < nearD) { nearD = d; nearO = o.name; } });
+    const mT = Math.ceil(hrsM / (A.prod * A.ucomf)), cT = Math.ceil(hrsC / (A.prod * A.ucomf)), total = mT + cT;
+    const contrib = rev - lcost, afterOffice = contrib - A.officeFixed, afterSat = contrib - A.satFixed;
+    const anyAh = mem.some((r) => r.ahReq);
+    const thin = Math.min(hrsM > 0 ? mT : 999, hrsC > 0 ? cT : 999) < A.rotmin;
+    const note = (anyAh && thin) ? " Note: after-hours coverage would need remote-only or shared on-call support." : "";
+    const money = (x) => "$" + Math.round(Math.abs(x)).toLocaleString("en-US");
+    let level, verdict;
+    if (total >= A.officeMin) {
+      if (afterOffice >= 0) { level = "office"; verdict = "New office justified: " + total + " techs, contribution clears office overhead."; }
+      else { level = "short"; verdict = "Headcount (" + total + " techs) supports an office, but contribution is " + money(afterOffice) + " short of office overhead."; }
+    } else if (total >= A.expandMin) {
+      if (afterSat >= 0) { level = "team"; verdict = "Station a " + total + "-tech team in this area (extension of " + nearO + " or satellite): justified."; }
+      else { level = "short"; verdict = "Team size (" + total + ") is enough, but contribution is " + money(afterSat) + " short of satellite overhead."; }
+    } else { level = "small"; verdict = "Too small for a team (" + total + " tech" + (total === 1 ? "" : "s") + "): serve via remote Option B, a partner, or wait for more demand."; }
+    return {
+      key: k, anchorName: results[k - 1].p.name, ids: mem.map((r) => results.indexOf(r) + 1), members: mem,
+      rev, lcost, contrib, hrsM, hrsC, mT, cT, total, lat, lon, nearO, nearD, afterOffice, afterSat,
+      perTech: total > 0 ? rev / total : null, level, verdict: verdict + note
+    };
+  });
+  return { results, officeRows, clusters };
+}
+
+/* ---------- Pin parsing: Google Maps, Apple Maps, geo: URIs, plain coordinates ---------- */
+function parseLocation(raw) {
+  if (!raw) return null;
+  let t = String(raw).trim();
+  if (!t) return null;
+  if (/maps\.app\.goo\.gl|goo\.gl\/maps|maps\.apple\.com\/p\/|apple\.co\//i.test(t) && !/[-\d]\.\d{3,}\s*,\s*-?\d/.test(decodeURIComponent(t.replace(/%(?![0-9a-f]{2})/gi, "%25")))) {
+    return { error: "short" };
+  }
+  let s = t;
+  try { s = decodeURIComponent(t.replace(/%(?![0-9a-f]{2})/gi, "%25")); } catch (e) { s = t; }
+  s = s.replace(/\+/g, " ");
+  const ok = (la, lo) => isFinite(la) && isFinite(lo) && Math.abs(la) <= 90 && Math.abs(lo) <= 180 && !(la === 0 && lo === 0);
+  const out = (la, lo, src) => ok(la, lo) ? { lat: +(+la).toFixed(6), lon: +(+lo).toFixed(6), source: src } : null;
+  let m;
+  // Google place pin data
+  if ((m = s.match(/!3d(-?\d+(?:\.\d+)?)!4d(-?\d+(?:\.\d+)?)/))) { const r = out(m[1], m[2], "Google Maps link"); if (r) return r; }
+  // query parameters (Apple ll/coordinate/q/sll/daddr, Google q/query/destination/center)
+  const isApple = /maps\.apple\.com/i.test(s);
+  const params = ["coordinate", "ll", "q", "query", "destination", "daddr", "center", "sll"];
+  for (const key of params) {
+    const re = new RegExp("[?&]" + key + "=([^&#]+)", "i");
+    const mm = s.match(re);
+    if (mm) {
+      const c = mm[1].trim().replace(/^loc:/i, "").match(/^(-?\d{1,3}(?:\.\d+)?)\s*,\s*(-?\d{1,3}(?:\.\d+)?)$/);
+      if (c) { const r = out(c[1], c[2], isApple ? "Apple Maps link" : "map link"); if (r) return r; }
+    }
+  }
+  // Google viewport centre
+  if ((m = s.match(/@(-?\d{1,3}(?:\.\d+)?),(-?\d{1,3}(?:\.\d+)?)/))) { const r = out(m[1], m[2], "Google Maps link"); if (r) return r; }
+  // /place/lat,lon or /search/lat, lon
+  if ((m = s.match(/\/(?:place|search)\/(-?\d{1,3}\.\d+)\s*,\s*(-?\d{1,3}\.\d+)/))) { const r = out(m[1], m[2], "Google Maps link"); if (r) return r; }
+  // geo: URI
+  if ((m = s.match(/geo:(-?\d{1,3}(?:\.\d+)?),(-?\d{1,3}(?:\.\d+)?)/i))) { const r = out(m[1], m[2], "geo link"); if (r) return r; }
+  // DMS 38°41'53.5"N 90°09'22.0"W
+  const dms = [...s.matchAll(/(\d{1,3})\s*[°º]\s*(\d{1,2})\s*['′’]\s*(\d{1,2}(?:\.\d+)?)\s*["″”]?\s*([NSEW])/gi)];
+  if (dms.length >= 2) {
+    const conv = (x) => { let v = +x[1] + (+x[2]) / 60 + (+x[3]) / 3600; if (/[SW]/i.test(x[4])) v = -v; return { v, h: x[4].toUpperCase() }; };
+    const a = conv(dms[0]), b = conv(dms[1]);
+    const la = /[NS]/.test(a.h) ? a.v : b.v, lo = /[EW]/.test(a.h) ? a.v : b.v;
+    const r = out(la, lo, "coordinates"); if (r) return r;
+  }
+  // decimal with hemisphere letters: 38.6982° N, 90.1561° W
+  if ((m = s.match(/(-?\d{1,3}(?:\.\d+)?)\s*[°º]?\s*([NSEW])\b[\s,;]*(-?\d{1,3}(?:\.\d+)?)\s*[°º]?\s*([NSEW])\b/i))) {
+    let a = +m[1], b = +m[3]; const ha = m[2].toUpperCase(), hb = m[4].toUpperCase();
+    if (/[SW]/.test(ha)) a = -Math.abs(a); if (/[SW]/.test(hb)) b = -Math.abs(b);
+    const la = /[NS]/.test(ha) ? a : b, lo = /[EW]/.test(ha) ? a : b;
+    const r = out(la, lo, "coordinates"); if (r) return r;
+  }
+  // bare "lat, lon" anywhere in the text
+  if ((m = s.match(/(-?\d{1,3}\.\d{2,})\s*[,;\s]\s*(-?\d{1,3}\.\d{2,})/))) { const r = out(m[1], m[2], "coordinates"); if (r) return r; }
+  return { error: "none" };
+}
+
+
+/* ---------- First-pass estimator: project type + size -> hours, visits, call-outs, parts, agreement value ---------- */
+const DEFAULT_LIBRARY = {"equipment": [{"name": "Chiller", "unit": "per chiller", "events": 4, "mech": 8, "ctrl": 1, "calls": 0.5, "hrsCall": 8, "mechShare": 0.8, "ah": 0.3, "parts": 1500, "note": "Quarterly mechanical and annual deep inspection pattern"}, {"name": "Cooling tower cell", "unit": "per cell", "events": 6, "mech": 4, "ctrl": 0.25, "calls": 0.4, "hrsCall": 5, "mechShare": 0.9, "ah": 0.25, "parts": 700, "note": "Seasonal startup and shutdown plus frequent water and basin checks"}, {"name": "Boiler", "unit": "per boiler", "events": 4, "mech": 5, "ctrl": 0.5, "calls": 0.3, "hrsCall": 6, "mechShare": 0.8, "ah": 0.35, "parts": 600, "note": "Monthly in heating season, annual combustion and safety testing"}, {"name": "Air handling unit", "unit": "per AHU", "events": 4, "mech": 3, "ctrl": 0.75, "calls": 0.6, "hrsCall": 4, "mechShare": 0.6, "ah": 0.1, "parts": 300, "note": "Quarterly belts, coils, dampers and controls checks"}, {"name": "Rooftop / packaged unit", "unit": "per unit", "events": 2, "mech": 2.5, "ctrl": 0.25, "calls": 0.7, "hrsCall": 3.5, "mechShare": 0.85, "ah": 0.1, "parts": 250, "note": "Seasonal (twice a year) coil, filter, refrigerant and economizer checks"}, {"name": "VAV / terminal box", "unit": "per box", "events": 1, "mech": 0.25, "ctrl": 0.25, "calls": 0.1, "hrsCall": 1.5, "mechShare": 0.4, "ah": 0.02, "parts": 15, "note": "Annual check of damper, reheat and controller"}, {"name": "HVAC pump", "unit": "per pump", "events": 2, "mech": 1.5, "ctrl": 0.1, "calls": 0.15, "hrsCall": 4, "mechShare": 0.9, "ah": 0.15, "parts": 120, "note": "Semi-annual alignment, seals and vibration"}, {"name": "CRAH / CRAC unit", "unit": "per unit", "events": 4, "mech": 3, "ctrl": 0.5, "calls": 0.5, "hrsCall": 4, "mechShare": 0.7, "ah": 0.35, "parts": 400, "note": "Quarterly for precision cooling in critical rooms"}, {"name": "Fan coil / split / VRF unit", "unit": "per unit", "events": 2, "mech": 1, "ctrl": 0.05, "calls": 0.2, "hrsCall": 2, "mechShare": 0.9, "ah": 0.05, "parts": 60, "note": "Semi-annual filters, coils and drains"}, {"name": "Exhaust / supply fan", "unit": "per fan", "events": 2, "mech": 1, "ctrl": 0.1, "calls": 0.15, "hrsCall": 2.5, "mechShare": 0.85, "ah": 0.05, "parts": 70, "note": "Semi-annual belts, bearings and motor checks"}, {"name": "BAS controller / panel", "unit": "per panel", "events": 2, "mech": 0, "ctrl": 1.5, "calls": 0.4, "hrsCall": 3, "mechShare": 0.0, "ah": 0.15, "parts": 80, "note": "Semi-annual backups, sensor checks and network health"}, {"name": "BAS server and software", "unit": "per site", "events": 4, "mech": 0, "ctrl": 2, "calls": 0.5, "hrsCall": 3, "mechShare": 0.0, "ah": 0.1, "parts": 500, "note": "Quarterly backups, patches, user and alarm review"}], "types": [{"name": "Office / commercial", "unit": "sq ft", "basis": 100000, "visits": 4, "counts": [1, 1, 1, 3, 3, 100, 3, 0, 8, 5, 6, 1], "lo": 0.25, "hi": 0.7, "src": "Contractor-published ranges (low-quality sources): about $0.15 to $0.45 per sq ft for PM-focused HVAC agreements. Placeholder band."}, {"name": "Hospital / healthcare", "unit": "sq ft", "basis": 100000, "visits": 12, "counts": [1.5, 1.5, 2, 8, 1, 250, 8, 0, 20, 20, 14, 1], "lo": 0.8, "hi": 2.0, "src": "Placeholder. No authoritative source found; calibrate to your hospital contracts."}, {"name": "K-12 school", "unit": "sq ft", "basis": 100000, "visits": 4, "counts": [0.4, 0.4, 1.2, 2, 5, 30, 2, 0, 30, 8, 4, 1], "lo": 0.25, "hi": 0.7, "src": "Placeholder. Calibrate to your school contracts."}, {"name": "University / lab", "unit": "sq ft", "basis": 100000, "visits": 12, "counts": [1.5, 1.5, 1.5, 8, 1, 300, 8, 0, 10, 25, 16, 1], "lo": 0.8, "hi": 2.5, "src": "Placeholder. Lab space with heavy exhaust and controls. Calibrate."}, {"name": "Data center", "unit": "MW of IT load", "basis": 1, "visits": 12, "counts": [0.6, 0.6, 0, 0.3, 0, 0, 1.5, 6, 0, 1, 3, 0.3], "lo": 20000, "hi": 120000, "src": "Your proposal deck, slide 13: $20K low, $40K likely, $120K high of service revenue per MW. Deck notes source quality varies."}, {"name": "Industrial / manufacturing", "unit": "sq ft", "basis": 100000, "visits": 4, "counts": [0.3, 0.3, 1, 2, 8, 10, 6, 0, 5, 30, 4, 0.5], "lo": 0.15, "hi": 0.6, "src": "Placeholder. Calibrate."}, {"name": "Retail / warehouse", "unit": "sq ft", "basis": 100000, "visits": 4, "counts": [0, 0, 0.3, 0.5, 10, 5, 0, 0, 2, 6, 2, 0.3], "lo": 0.12, "hi": 0.4, "src": "Placeholder. Calibrate."}, {"name": "Hotel / hospitality", "unit": "rooms", "basis": 100, "visits": 6, "counts": [0.6, 0.6, 1, 2, 1, 0, 4, 0, 100, 8, 5, 0.5], "lo": 300, "hi": 900, "src": "Placeholder ($ per room per year). Calibrate."}], "tiers": {"A - Time & Material": {"agree": 0, "risk": 0}, "B - Phone & Remote": {"agree": 0, "risk": 0}, "C - Preferred": {"agree": 1, "risk": 0.05}, "D - Premier": {"agree": 1, "risk": 0.225}}};
+function tierEst(S, name) {
+  const t = (S.tiers || []).find((x) => x.name === name) || {};
+  const d = (DEFAULT_LIBRARY.tiers || {})[name] || { agree: 0, risk: 0 };
+  return { agree: has(t.agree) ? num(t.agree) : d.agree, risk: has(t.risk) ? num(t.risk) : d.risk };
+}
+function estimateProject(S, o) {
+  const lib = S.library || DEFAULT_LIBRARY, A = S.A, E = lib.equipment;
+  const ty = lib.types.find((x) => x.name === o.type);
+  if (!ty || !has(o.size) || num(o.size) <= 0 || !(num(ty.basis) > 0)) return null;
+  const cx = has(o.cx) && num(o.cx) > 0 ? num(o.cx) : 1;
+  const q = ty.counts.map((c) => num(o.size) / ty.basis * num(c) * cx);
+  const sum = (f) => q.reduce((a, qi, i) => a + qi * f(E[i]), 0);
+  const mechPM = sum((e) => e.events * e.mech), ctrlPM = sum((e) => e.events * e.ctrl);
+  const corrVisits = sum((e) => e.calls * (1 - e.ah)), callouts = sum((e) => e.calls * e.ah);
+  const mechCorr = sum((e) => e.calls * (1 - e.ah) * e.hrsCall * e.mechShare), ctrlCorr = sum((e) => e.calls * (1 - e.ah) * e.hrsCall * (1 - e.mechShare));
+  const parts = sum((e) => e.parts);
+  const te = tierEst(S, o.tier), trips = ty.visits + corrVisits + callouts;
+  const cost = (mechPM + ctrlPM) * A.loaded + ((mechCorr + ctrlCorr) * A.loaded + callouts * (A.ahhrs * A.loaded * A.prem + A.alloc)) * (1 + te.risk) + parts +
+    trips * (2 * A.local * A.loaded + 2 * A.local * A.speed * A.mile);
+  const value = te.agree === 1 ? cost / (1 - A.tgt) : null;
+  const perUnit = value !== null ? value / num(o.size) : null;
+  let bench = null;
+  if (perUnit !== null && has(ty.lo) && has(ty.hi)) bench = perUnit < ty.lo ? "below" : perUnit > ty.hi ? "above" : "within";
+  return { mech: mechPM + mechCorr, ctrl: ctrlPM + ctrlCorr, pm: ty.visits, corr: corrVisits, calls: callouts, other: parts, cost, value, perUnit, bench, lo: ty.lo, hi: ty.hi, unit: ty.unit, qty: q };
+}
+
+</script>
+<script>
+//---------------------------------------------------------------------
+//
+// QR Code Generator for JavaScript
+//
+// Copyright (c) 2009 Kazuhiko Arase
+//
+// URL: http://www.d-project.com/
+//
+// Licensed under the MIT license:
+//  http://www.opensource.org/licenses/mit-license.php
+//
+// The word 'QR Code' is registered trademark of
+// DENSO WAVE INCORPORATED
+//  http://www.denso-wave.com/qrcode/faqpatent-e.html
+//
+//---------------------------------------------------------------------
+
+var qrcode = function() {
+
+  //---------------------------------------------------------------------
+  // qrcode
+  //---------------------------------------------------------------------
+
+  /**
+   * qrcode
+   * @param typeNumber 1 to 40
+   * @param errorCorrectionLevel 'L','M','Q','H'
+   */
+  var qrcode = function(typeNumber, errorCorrectionLevel) {
+
+    var PAD0 = 0xEC;
+    var PAD1 = 0x11;
+
+    var _typeNumber = typeNumber;
+    var _errorCorrectionLevel = QRErrorCorrectionLevel[errorCorrectionLevel];
+    var _modules = null;
+    var _moduleCount = 0;
+    var _dataCache = null;
+    var _dataList = [];
+
+    var _this = {};
+
+    var makeImpl = function(test, maskPattern) {
+
+      _moduleCount = _typeNumber * 4 + 17;
+      _modules = function(moduleCount) {
+        var modules = new Array(moduleCount);
+        for (var row = 0; row < moduleCount; row += 1) {
+          modules[row] = new Array(moduleCount);
+          for (var col = 0; col < moduleCount; col += 1) {
+            modules[row][col] = null;
+          }
+        }
+        return modules;
+      }(_moduleCount);
+
+      setupPositionProbePattern(0, 0);
+      setupPositionProbePattern(_moduleCount - 7, 0);
+      setupPositionProbePattern(0, _moduleCount - 7);
+      setupPositionAdjustPattern();
+      setupTimingPattern();
+      setupTypeInfo(test, maskPattern);
+
+      if (_typeNumber >= 7) {
+        setupTypeNumber(test);
+      }
+
+      if (_dataCache == null) {
+        _dataCache = createData(_typeNumber, _errorCorrectionLevel, _dataList);
+      }
+
+      mapData(_dataCache, maskPattern);
+    };
+
+    var setupPositionProbePattern = function(row, col) {
+
+      for (var r = -1; r <= 7; r += 1) {
+
+        if (row + r <= -1 || _moduleCount <= row + r) continue;
+
+        for (var c = -1; c <= 7; c += 1) {
+
+          if (col + c <= -1 || _moduleCount <= col + c) continue;
+
+          if ( (0 <= r && r <= 6 && (c == 0 || c == 6) )
+              || (0 <= c && c <= 6 && (r == 0 || r == 6) )
+              || (2 <= r && r <= 4 && 2 <= c && c <= 4) ) {
+            _modules[row + r][col + c] = true;
+          } else {
+            _modules[row + r][col + c] = false;
+          }
+        }
+      }
+    };
+
+    var getBestMaskPattern = function() {
+
+      var minLostPoint = 0;
+      var pattern = 0;
+
+      for (var i = 0; i < 8; i += 1) {
+
+        makeImpl(true, i);
+
+        var lostPoint = QRUtil.getLostPoint(_this);
+
+        if (i == 0 || minLostPoint > lostPoint) {
+          minLostPoint = lostPoint;
+          pattern = i;
+        }
+      }
+
+      return pattern;
+    };
+
+    var setupTimingPattern = function() {
+
+      for (var r = 8; r < _moduleCount - 8; r += 1) {
+        if (_modules[r][6] != null) {
+          continue;
+        }
+        _modules[r][6] = (r % 2 == 0);
+      }
+
+      for (var c = 8; c < _moduleCount - 8; c += 1) {
+        if (_modules[6][c] != null) {
+          continue;
+        }
+        _modules[6][c] = (c % 2 == 0);
+      }
+    };
+
+    var setupPositionAdjustPattern = function() {
+
+      var pos = QRUtil.getPatternPosition(_typeNumber);
+
+      for (var i = 0; i < pos.length; i += 1) {
+
+        for (var j = 0; j < pos.length; j += 1) {
+
+          var row = pos[i];
+          var col = pos[j];
+
+          if (_modules[row][col] != null) {
+            continue;
+          }
+
+          for (var r = -2; r <= 2; r += 1) {
+
+            for (var c = -2; c <= 2; c += 1) {
+
+              if (r == -2 || r == 2 || c == -2 || c == 2
+                  || (r == 0 && c == 0) ) {
+                _modules[row + r][col + c] = true;
+              } else {
+                _modules[row + r][col + c] = false;
+              }
+            }
+          }
+        }
+      }
+    };
+
+    var setupTypeNumber = function(test) {
+
+      var bits = QRUtil.getBCHTypeNumber(_typeNumber);
+
+      for (var i = 0; i < 18; i += 1) {
+        var mod = (!test && ( (bits >> i) & 1) == 1);
+        _modules[Math.floor(i / 3)][i % 3 + _moduleCount - 8 - 3] = mod;
+      }
+
+      for (var i = 0; i < 18; i += 1) {
+        var mod = (!test && ( (bits >> i) & 1) == 1);
+        _modules[i % 3 + _moduleCount - 8 - 3][Math.floor(i / 3)] = mod;
+      }
+    };
+
+    var setupTypeInfo = function(test, maskPattern) {
+
+      var data = (_errorCorrectionLevel << 3) | maskPattern;
+      var bits = QRUtil.getBCHTypeInfo(data);
+
+      // vertical
+      for (var i = 0; i < 15; i += 1) {
+
+        var mod = (!test && ( (bits >> i) & 1) == 1);
+
+        if (i < 6) {
+          _modules[i][8] = mod;
+        } else if (i < 8) {
+          _modules[i + 1][8] = mod;
+        } else {
+          _modules[_moduleCount - 15 + i][8] = mod;
+        }
+      }
+
+      // horizontal
+      for (var i = 0; i < 15; i += 1) {
+
+        var mod = (!test && ( (bits >> i) & 1) == 1);
+
+        if (i < 8) {
+          _modules[8][_moduleCount - i - 1] = mod;
+        } else if (i < 9) {
+          _modules[8][15 - i - 1 + 1] = mod;
+        } else {
+          _modules[8][15 - i - 1] = mod;
+        }
+      }
+
+      // fixed module
+      _modules[_moduleCount - 8][8] = (!test);
+    };
+
+    var mapData = function(data, maskPattern) {
+
+      var inc = -1;
+      var row = _moduleCount - 1;
+      var bitIndex = 7;
+      var byteIndex = 0;
+      var maskFunc = QRUtil.getMaskFunction(maskPattern);
+
+      for (var col = _moduleCount - 1; col > 0; col -= 2) {
+
+        if (col == 6) col -= 1;
+
+        while (true) {
+
+          for (var c = 0; c < 2; c += 1) {
+
+            if (_modules[row][col - c] == null) {
+
+              var dark = false;
+
+              if (byteIndex < data.length) {
+                dark = ( ( (data[byteIndex] >>> bitIndex) & 1) == 1);
+              }
+
+              var mask = maskFunc(row, col - c);
+
+              if (mask) {
+                dark = !dark;
+              }
+
+              _modules[row][col - c] = dark;
+              bitIndex -= 1;
+
+              if (bitIndex == -1) {
+                byteIndex += 1;
+                bitIndex = 7;
+              }
+            }
+          }
+
+          row += inc;
+
+          if (row < 0 || _moduleCount <= row) {
+            row -= inc;
+            inc = -inc;
+            break;
+          }
+        }
+      }
+    };
+
+    var createBytes = function(buffer, rsBlocks) {
+
+      var offset = 0;
+
+      var maxDcCount = 0;
+      var maxEcCount = 0;
+
+      var dcdata = new Array(rsBlocks.length);
+      var ecdata = new Array(rsBlocks.length);
+
+      for (var r = 0; r < rsBlocks.length; r += 1) {
+
+        var dcCount = rsBlocks[r].dataCount;
+        var ecCount = rsBlocks[r].totalCount - dcCount;
+
+        maxDcCount = Math.max(maxDcCount, dcCount);
+        maxEcCount = Math.max(maxEcCount, ecCount);
+
+        dcdata[r] = new Array(dcCount);
+
+        for (var i = 0; i < dcdata[r].length; i += 1) {
+          dcdata[r][i] = 0xff & buffer.getBuffer()[i + offset];
+        }
+        offset += dcCount;
+
+        var rsPoly = QRUtil.getErrorCorrectPolynomial(ecCount);
+        var rawPoly = qrPolynomial(dcdata[r], rsPoly.getLength() - 1);
+
+        var modPoly = rawPoly.mod(rsPoly);
+        ecdata[r] = new Array(rsPoly.getLength() - 1);
+        for (var i = 0; i < ecdata[r].length; i += 1) {
+          var modIndex = i + modPoly.getLength() - ecdata[r].length;
+          ecdata[r][i] = (modIndex >= 0)? modPoly.getAt(modIndex) : 0;
+        }
+      }
+
+      var totalCodeCount = 0;
+      for (var i = 0; i < rsBlocks.length; i += 1) {
+        totalCodeCount += rsBlocks[i].totalCount;
+      }
+
+      var data = new Array(totalCodeCount);
+      var index = 0;
+
+      for (var i = 0; i < maxDcCount; i += 1) {
+        for (var r = 0; r < rsBlocks.length; r += 1) {
+          if (i < dcdata[r].length) {
+            data[index] = dcdata[r][i];
+            index += 1;
+          }
+        }
+      }
+
+      for (var i = 0; i < maxEcCount; i += 1) {
+        for (var r = 0; r < rsBlocks.length; r += 1) {
+          if (i < ecdata[r].length) {
+            data[index] = ecdata[r][i];
+            index += 1;
+          }
+        }
+      }
+
+      return data;
+    };
+
+    var createData = function(typeNumber, errorCorrectionLevel, dataList) {
+
+      var rsBlocks = QRRSBlock.getRSBlocks(typeNumber, errorCorrectionLevel);
+
+      var buffer = qrBitBuffer();
+
+      for (var i = 0; i < dataList.length; i += 1) {
+        var data = dataList[i];
+        buffer.put(data.getMode(), 4);
+        buffer.put(data.getLength(), QRUtil.getLengthInBits(data.getMode(), typeNumber) );
+        data.write(buffer);
+      }
+
+      // calc num max data.
+      var totalDataCount = 0;
+      for (var i = 0; i < rsBlocks.length; i += 1) {
+        totalDataCount += rsBlocks[i].dataCount;
+      }
+
+      if (buffer.getLengthInBits() > totalDataCount * 8) {
+        throw 'code length overflow. ('
+          + buffer.getLengthInBits()
+          + '>'
+          + totalDataCount * 8
+          + ')';
+      }
+
+      // end code
+      if (buffer.getLengthInBits() + 4 <= totalDataCount * 8) {
+        buffer.put(0, 4);
+      }
+
+      // padding
+      while (buffer.getLengthInBits() % 8 != 0) {
+        buffer.putBit(false);
+      }
+
+      // padding
+      while (true) {
+
+        if (buffer.getLengthInBits() >= totalDataCount * 8) {
+          break;
+        }
+        buffer.put(PAD0, 8);
+
+        if (buffer.getLengthInBits() >= totalDataCount * 8) {
+          break;
+        }
+        buffer.put(PAD1, 8);
+      }
+
+      return createBytes(buffer, rsBlocks);
+    };
+
+    _this.addData = function(data, mode) {
+
+      mode = mode || 'Byte';
+
+      var newData = null;
+
+      switch(mode) {
+      case 'Numeric' :
+        newData = qrNumber(data);
+        break;
+      case 'Alphanumeric' :
+        newData = qrAlphaNum(data);
+        break;
+      case 'Byte' :
+        newData = qr8BitByte(data);
+        break;
+      case 'Kanji' :
+        newData = qrKanji(data);
+        break;
+      default :
+        throw 'mode:' + mode;
+      }
+
+      _dataList.push(newData);
+      _dataCache = null;
+    };
+
+    _this.isDark = function(row, col) {
+      if (row < 0 || _moduleCount <= row || col < 0 || _moduleCount <= col) {
+        throw row + ',' + col;
+      }
+      return _modules[row][col];
+    };
+
+    _this.getModuleCount = function() {
+      return _moduleCount;
+    };
+
+    _this.make = function() {
+      if (_typeNumber < 1) {
+        var typeNumber = 1;
+
+        for (; typeNumber < 40; typeNumber++) {
+          var rsBlocks = QRRSBlock.getRSBlocks(typeNumber, _errorCorrectionLevel);
+          var buffer = qrBitBuffer();
+
+          for (var i = 0; i < _dataList.length; i++) {
+            var data = _dataList[i];
+            buffer.put(data.getMode(), 4);
+            buffer.put(data.getLength(), QRUtil.getLengthInBits(data.getMode(), typeNumber) );
+            data.write(buffer);
+          }
+
+          var totalDataCount = 0;
+          for (var i = 0; i < rsBlocks.length; i++) {
+            totalDataCount += rsBlocks[i].dataCount;
+          }
+
+          if (buffer.getLengthInBits() <= totalDataCount * 8) {
+            break;
+          }
+        }
+
+        _typeNumber = typeNumber;
+      }
+
+      makeImpl(false, getBestMaskPattern() );
+    };
+
+    _this.createTableTag = function(cellSize, margin) {
+
+      cellSize = cellSize || 2;
+      margin = (typeof margin == 'undefined')? cellSize * 4 : margin;
+
+      var qrHtml = '';
+
+      qrHtml += '<table style="';
+      qrHtml += ' border-width: 0px; border-style: none;';
+      qrHtml += ' border-collapse: collapse;';
+      qrHtml += ' padding: 0px; margin: ' + margin + 'px;';
+      qrHtml += '">';
+      qrHtml += '<tbody>';
+
+      for (var r = 0; r < _this.getModuleCount(); r += 1) {
+
+        qrHtml += '<tr>';
+
+        for (var c = 0; c < _this.getModuleCount(); c += 1) {
+          qrHtml += '<td style="';
+          qrHtml += ' border-width: 0px; border-style: none;';
+          qrHtml += ' border-collapse: collapse;';
+          qrHtml += ' padding: 0px; margin: 0px;';
+          qrHtml += ' width: ' + cellSize + 'px;';
+          qrHtml += ' height: ' + cellSize + 'px;';
+          qrHtml += ' background-color: ';
+          qrHtml += _this.isDark(r, c)? '#000000' : '#ffffff';
+          qrHtml += ';';
+          qrHtml += '"/>';
+        }
+
+        qrHtml += '</tr>';
+      }
+
+      qrHtml += '</tbody>';
+      qrHtml += '</table>';
+
+      return qrHtml;
+    };
+
+    _this.createSvgTag = function(cellSize, margin, alt, title) {
+
+      var opts = {};
+      if (typeof arguments[0] == 'object') {
+        // Called by options.
+        opts = arguments[0];
+        // overwrite cellSize and margin.
+        cellSize = opts.cellSize;
+        margin = opts.margin;
+        alt = opts.alt;
+        title = opts.title;
+      }
+
+      cellSize = cellSize || 2;
+      margin = (typeof margin == 'undefined')? cellSize * 4 : margin;
+
+      // Compose alt property surrogate
+      alt = (typeof alt === 'string') ? {text: alt} : alt || {};
+      alt.text = alt.text || null;
+      alt.id = (alt.text) ? alt.id || 'qrcode-description' : null;
+
+      // Compose title property surrogate
+      title = (typeof title === 'string') ? {text: title} : title || {};
+      title.text = title.text || null;
+      title.id = (title.text) ? title.id || 'qrcode-title' : null;
+
+      var size = _this.getModuleCount() * cellSize + margin * 2;
+      var c, mc, r, mr, qrSvg='', rect;
+
+      rect = 'l' + cellSize + ',0 0,' + cellSize +
+        ' -' + cellSize + ',0 0,-' + cellSize + 'z ';
+
+      qrSvg += '<svg version="1.1" xmlns="http://www.w3.org/2000/svg"';
+      qrSvg += !opts.scalable ? ' width="' + size + 'px" height="' + size + 'px"' : '';
+      qrSvg += ' viewBox="0 0 ' + size + ' ' + size + '" ';
+      qrSvg += ' preserveAspectRatio="xMinYMin meet"';
+      qrSvg += (title.text || alt.text) ? ' role="img" aria-labelledby="' +
+          escapeXml([title.id, alt.id].join(' ').trim() ) + '"' : '';
+      qrSvg += '>';
+      qrSvg += (title.text) ? '<title id="' + escapeXml(title.id) + '">' +
+          escapeXml(title.text) + '</title>' : '';
+      qrSvg += (alt.text) ? '<description id="' + escapeXml(alt.id) + '">' +
+          escapeXml(alt.text) + '</description>' : '';
+      qrSvg += '<rect width="100%" height="100%" fill="white" cx="0" cy="0"/>';
+      qrSvg += '<path d="';
+
+      for (r = 0; r < _this.getModuleCount(); r += 1) {
+        mr = r * cellSize + margin;
+        for (c = 0; c < _this.getModuleCount(); c += 1) {
+          if (_this.isDark(r, c) ) {
+            mc = c*cellSize+margin;
+            qrSvg += 'M' + mc + ',' + mr + rect;
+          }
+        }
+      }
+
+      qrSvg += '" stroke="transparent" fill="black"/>';
+      qrSvg += '</svg>';
+
+      return qrSvg;
+    };
+
+    _this.createDataURL = function(cellSize, margin) {
+
+      cellSize = cellSize || 2;
+      margin = (typeof margin == 'undefined')? cellSize * 4 : margin;
+
+      var size = _this.getModuleCount() * cellSize + margin * 2;
+      var min = margin;
+      var max = size - margin;
+
+      return createDataURL(size, size, function(x, y) {
+        if (min <= x && x < max && min <= y && y < max) {
+          var c = Math.floor( (x - min) / cellSize);
+          var r = Math.floor( (y - min) / cellSize);
+          return _this.isDark(r, c)? 0 : 1;
+        } else {
+          return 1;
+        }
+      } );
+    };
+
+    _this.createImgTag = function(cellSize, margin, alt) {
+
+      cellSize = cellSize || 2;
+      margin = (typeof margin == 'undefined')? cellSize * 4 : margin;
+
+      var size = _this.getModuleCount() * cellSize + margin * 2;
+
+      var img = '';
+      img += '<img';
+      img += '\u0020src="';
+      img += _this.createDataURL(cellSize, margin);
+      img += '"';
+      img += '\u0020width="';
+      img += size;
+      img += '"';
+      img += '\u0020height="';
+      img += size;
+      img += '"';
+      if (alt) {
+        img += '\u0020alt="';
+        img += escapeXml(alt);
+        img += '"';
+      }
+      img += '/>';
+
+      return img;
+    };
+
+    var escapeXml = function(s) {
+      var escaped = '';
+      for (var i = 0; i < s.length; i += 1) {
+        var c = s.charAt(i);
+        switch(c) {
+        case '<': escaped += '&lt;'; break;
+        case '>': escaped += '&gt;'; break;
+        case '&': escaped += '&amp;'; break;
+        case '"': escaped += '&quot;'; break;
+        default : escaped += c; break;
+        }
+      }
+      return escaped;
+    };
+
+    var _createHalfASCII = function(margin) {
+      var cellSize = 1;
+      margin = (typeof margin == 'undefined')? cellSize * 2 : margin;
+
+      var size = _this.getModuleCount() * cellSize + margin * 2;
+      var min = margin;
+      var max = size - margin;
+
+      var y, x, r1, r2, p;
+
+      var blocks = {
+        '██': '█',
+        '█ ': '▀',
+        ' █': '▄',
+        '  ': ' '
+      };
+
+      var blocksLastLineNoMargin = {
+        '██': '▀',
+        '█ ': '▀',
+        ' █': ' ',
+        '  ': ' '
+      };
+
+      var ascii = '';
+      for (y = 0; y < size; y += 2) {
+        r1 = Math.floor((y - min) / cellSize);
+        r2 = Math.floor((y + 1 - min) / cellSize);
+        for (x = 0; x < size; x += 1) {
+          p = '█';
+
+          if (min <= x && x < max && min <= y && y < max && _this.isDark(r1, Math.floor((x - min) / cellSize))) {
+            p = ' ';
+          }
+
+          if (min <= x && x < max && min <= y+1 && y+1 < max && _this.isDark(r2, Math.floor((x - min) / cellSize))) {
+            p += ' ';
+          }
+          else {
+            p += '█';
+          }
+
+          // Output 2 characters per pixel, to create full square. 1 character per pixels gives only half width of square.
+          ascii += (margin < 1 && y+1 >= max) ? blocksLastLineNoMargin[p] : blocks[p];
+        }
+
+        ascii += '\n';
+      }
+
+      if (size % 2 && margin > 0) {
+        return ascii.substring(0, ascii.length - size - 1) + Array(size+1).join('▀');
+      }
+
+      return ascii.substring(0, ascii.length-1);
+    };
+
+    _this.createASCII = function(cellSize, margin) {
+      cellSize = cellSize || 1;
+
+      if (cellSize < 2) {
+        return _createHalfASCII(margin);
+      }
+
+      cellSize -= 1;
+      margin = (typeof margin == 'undefined')? cellSize * 2 : margin;
+
+      var size = _this.getModuleCount() * cellSize + margin * 2;
+      var min = margin;
+      var max = size - margin;
+
+      var y, x, r, p;
+
+      var white = Array(cellSize+1).join('██');
+      var black = Array(cellSize+1).join('  ');
+
+      var ascii = '';
+      var line = '';
+      for (y = 0; y < size; y += 1) {
+        r = Math.floor( (y - min) / cellSize);
+        line = '';
+        for (x = 0; x < size; x += 1) {
+          p = 1;
+
+          if (min <= x && x < max && min <= y && y < max && _this.isDark(r, Math.floor((x - min) / cellSize))) {
+            p = 0;
+          }
+
+          // Output 2 characters per pixel, to create full square. 1 character per pixels gives only half width of square.
+          line += p ? white : black;
+        }
+
+        for (r = 0; r < cellSize; r += 1) {
+          ascii += line + '\n';
+        }
+      }
+
+      return ascii.substring(0, ascii.length-1);
+    };
+
+    _this.renderTo2dContext = function(context, cellSize) {
+      cellSize = cellSize || 2;
+      var length = _this.getModuleCount();
+      for (var row = 0; row < length; row++) {
+        for (var col = 0; col < length; col++) {
+          context.fillStyle = _this.isDark(row, col) ? 'black' : 'white';
+          context.fillRect(row * cellSize, col * cellSize, cellSize, cellSize);
+        }
+      }
+    }
+
+    return _this;
+  };
+
+  //---------------------------------------------------------------------
+  // qrcode.stringToBytes
+  //---------------------------------------------------------------------
+
+  qrcode.stringToBytesFuncs = {
+    'default' : function(s) {
+      var bytes = [];
+      for (var i = 0; i < s.length; i += 1) {
+        var c = s.charCodeAt(i);
+        bytes.push(c & 0xff);
+      }
+      return bytes;
+    }
+  };
+
+  qrcode.stringToBytes = qrcode.stringToBytesFuncs['default'];
+
+  //---------------------------------------------------------------------
+  // qrcode.createStringToBytes
+  //---------------------------------------------------------------------
+
+  /**
+   * @param unicodeData base64 string of byte array.
+   * [16bit Unicode],[16bit Bytes], ...
+   * @param numChars
+   */
+  qrcode.createStringToBytes = function(unicodeData, numChars) {
+
+    // create conversion map.
+
+    var unicodeMap = function() {
+
+      var bin = base64DecodeInputStream(unicodeData);
+      var read = function() {
+        var b = bin.read();
+        if (b == -1) throw 'eof';
+        return b;
+      };
+
+      var count = 0;
+      var unicodeMap = {};
+      while (true) {
+        var b0 = bin.read();
+        if (b0 == -1) break;
+        var b1 = read();
+        var b2 = read();
+        var b3 = read();
+        var k = String.fromCharCode( (b0 << 8) | b1);
+        var v = (b2 << 8) | b3;
+        unicodeMap[k] = v;
+        count += 1;
+      }
+      if (count != numChars) {
+        throw count + ' != ' + numChars;
+      }
+
+      return unicodeMap;
+    }();
+
+    var unknownChar = '?'.charCodeAt(0);
+
+    return function(s) {
+      var bytes = [];
+      for (var i = 0; i < s.length; i += 1) {
+        var c = s.charCodeAt(i);
+        if (c < 128) {
+          bytes.push(c);
+        } else {
+          var b = unicodeMap[s.charAt(i)];
+          if (typeof b == 'number') {
+            if ( (b & 0xff) == b) {
+              // 1byte
+              bytes.push(b);
+            } else {
+              // 2bytes
+              bytes.push(b >>> 8);
+              bytes.push(b & 0xff);
+            }
+          } else {
+            bytes.push(unknownChar);
+          }
+        }
+      }
+      return bytes;
+    };
+  };
+
+  //---------------------------------------------------------------------
+  // QRMode
+  //---------------------------------------------------------------------
+
+  var QRMode = {
+    MODE_NUMBER :    1 << 0,
+    MODE_ALPHA_NUM : 1 << 1,
+    MODE_8BIT_BYTE : 1 << 2,
+    MODE_KANJI :     1 << 3
+  };
+
+  //---------------------------------------------------------------------
+  // QRErrorCorrectionLevel
+  //---------------------------------------------------------------------
+
+  var QRErrorCorrectionLevel = {
+    L : 1,
+    M : 0,
+    Q : 3,
+    H : 2
+  };
+
+  //---------------------------------------------------------------------
+  // QRMaskPattern
+  //---------------------------------------------------------------------
+
+  var QRMaskPattern = {
+    PATTERN000 : 0,
+    PATTERN001 : 1,
+    PATTERN010 : 2,
+    PATTERN011 : 3,
+    PATTERN100 : 4,
+    PATTERN101 : 5,
+    PATTERN110 : 6,
+    PATTERN111 : 7
+  };
+
+  //---------------------------------------------------------------------
+  // QRUtil
+  //---------------------------------------------------------------------
+
+  var QRUtil = function() {
+
+    var PATTERN_POSITION_TABLE = [
+      [],
+      [6, 18],
+      [6, 22],
+      [6, 26],
+      [6, 30],
+      [6, 34],
+      [6, 22, 38],
+      [6, 24, 42],
+      [6, 26, 46],
+      [6, 28, 50],
+      [6, 30, 54],
+      [6, 32, 58],
+      [6, 34, 62],
+      [6, 26, 46, 66],
+      [6, 26, 48, 70],
+      [6, 26, 50, 74],
+      [6, 30, 54, 78],
+      [6, 30, 56, 82],
+      [6, 30, 58, 86],
+      [6, 34, 62, 90],
+      [6, 28, 50, 72, 94],
+      [6, 26, 50, 74, 98],
+      [6, 30, 54, 78, 102],
+      [6, 28, 54, 80, 106],
+      [6, 32, 58, 84, 110],
+      [6, 30, 58, 86, 114],
+      [6, 34, 62, 90, 118],
+      [6, 26, 50, 74, 98, 122],
+      [6, 30, 54, 78, 102, 126],
+      [6, 26, 52, 78, 104, 130],
+      [6, 30, 56, 82, 108, 134],
+      [6, 34, 60, 86, 112, 138],
+      [6, 30, 58, 86, 114, 142],
+      [6, 34, 62, 90, 118, 146],
+      [6, 30, 54, 78, 102, 126, 150],
+      [6, 24, 50, 76, 102, 128, 154],
+      [6, 28, 54, 80, 106, 132, 158],
+      [6, 32, 58, 84, 110, 136, 162],
+      [6, 26, 54, 82, 110, 138, 166],
+      [6, 30, 58, 86, 114, 142, 170]
+    ];
+    var G15 = (1 << 10) | (1 << 8) | (1 << 5) | (1 << 4) | (1 << 2) | (1 << 1) | (1 << 0);
+    var G18 = (1 << 12) | (1 << 11) | (1 << 10) | (1 << 9) | (1 << 8) | (1 << 5) | (1 << 2) | (1 << 0);
+    var G15_MASK = (1 << 14) | (1 << 12) | (1 << 10) | (1 << 4) | (1 << 1);
+
+    var _this = {};
+
+    var getBCHDigit = function(data) {
+      var digit = 0;
+      while (data != 0) {
+        digit += 1;
+        data >>>= 1;
+      }
+      return digit;
+    };
+
+    _this.getBCHTypeInfo = function(data) {
+      var d = data << 10;
+      while (getBCHDigit(d) - getBCHDigit(G15) >= 0) {
+        d ^= (G15 << (getBCHDigit(d) - getBCHDigit(G15) ) );
+      }
+      return ( (data << 10) | d) ^ G15_MASK;
+    };
+
+    _this.getBCHTypeNumber = function(data) {
+      var d = data << 12;
+      while (getBCHDigit(d) - getBCHDigit(G18) >= 0) {
+        d ^= (G18 << (getBCHDigit(d) - getBCHDigit(G18) ) );
+      }
+      return (data << 12) | d;
+    };
+
+    _this.getPatternPosition = function(typeNumber) {
+      return PATTERN_POSITION_TABLE[typeNumber - 1];
+    };
+
+    _this.getMaskFunction = function(maskPattern) {
+
+      switch (maskPattern) {
+
+      case QRMaskPattern.PATTERN000 :
+        return function(i, j) { return (i + j) % 2 == 0; };
+      case QRMaskPattern.PATTERN001 :
+        return function(i, j) { return i % 2 == 0; };
+      case QRMaskPattern.PATTERN010 :
+        return function(i, j) { return j % 3 == 0; };
+      case QRMaskPattern.PATTERN011 :
+        return function(i, j) { return (i + j) % 3 == 0; };
+      case QRMaskPattern.PATTERN100 :
+        return function(i, j) { return (Math.floor(i / 2) + Math.floor(j / 3) ) % 2 == 0; };
+      case QRMaskPattern.PATTERN101 :
+        return function(i, j) { return (i * j) % 2 + (i * j) % 3 == 0; };
+      case QRMaskPattern.PATTERN110 :
+        return function(i, j) { return ( (i * j) % 2 + (i * j) % 3) % 2 == 0; };
+      case QRMaskPattern.PATTERN111 :
+        return function(i, j) { return ( (i * j) % 3 + (i + j) % 2) % 2 == 0; };
+
+      default :
+        throw 'bad maskPattern:' + maskPattern;
+      }
+    };
+
+    _this.getErrorCorrectPolynomial = function(errorCorrectLength) {
+      var a = qrPolynomial([1], 0);
+      for (var i = 0; i < errorCorrectLength; i += 1) {
+        a = a.multiply(qrPolynomial([1, QRMath.gexp(i)], 0) );
+      }
+      return a;
+    };
+
+    _this.getLengthInBits = function(mode, type) {
+
+      if (1 <= type && type < 10) {
+
+        // 1 - 9
+
+        switch(mode) {
+        case QRMode.MODE_NUMBER    : return 10;
+        case QRMode.MODE_ALPHA_NUM : return 9;
+        case QRMode.MODE_8BIT_BYTE : return 8;
+        case QRMode.MODE_KANJI     : return 8;
+        default :
+          throw 'mode:' + mode;
+        }
+
+      } else if (type < 27) {
+
+        // 10 - 26
+
+        switch(mode) {
+        case QRMode.MODE_NUMBER    : return 12;
+        case QRMode.MODE_ALPHA_NUM : return 11;
+        case QRMode.MODE_8BIT_BYTE : return 16;
+        case QRMode.MODE_KANJI     : return 10;
+        default :
+          throw 'mode:' + mode;
+        }
+
+      } else if (type < 41) {
+
+        // 27 - 40
+
+        switch(mode) {
+        case QRMode.MODE_NUMBER    : return 14;
+        case QRMode.MODE_ALPHA_NUM : return 13;
+        case QRMode.MODE_8BIT_BYTE : return 16;
+        case QRMode.MODE_KANJI     : return 12;
+        default :
+          throw 'mode:' + mode;
+        }
+
+      } else {
+        throw 'type:' + type;
+      }
+    };
+
+    _this.getLostPoint = function(qrcode) {
+
+      var moduleCount = qrcode.getModuleCount();
+
+      var lostPoint = 0;
+
+      // LEVEL1
+
+      for (var row = 0; row < moduleCount; row += 1) {
+        for (var col = 0; col < moduleCount; col += 1) {
+
+          var sameCount = 0;
+          var dark = qrcode.isDark(row, col);
+
+          for (var r = -1; r <= 1; r += 1) {
+
+            if (row + r < 0 || moduleCount <= row + r) {
+              continue;
+            }
+
+            for (var c = -1; c <= 1; c += 1) {
+
+              if (col + c < 0 || moduleCount <= col + c) {
+                continue;
+              }
+
+              if (r == 0 && c == 0) {
+                continue;
+              }
+
+              if (dark == qrcode.isDark(row + r, col + c) ) {
+                sameCount += 1;
+              }
+            }
+          }
+
+          if (sameCount > 5) {
+            lostPoint += (3 + sameCount - 5);
+          }
+        }
+      };
+
+      // LEVEL2
+
+      for (var row = 0; row < moduleCount - 1; row += 1) {
+        for (var col = 0; col < moduleCount - 1; col += 1) {
+          var count = 0;
+          if (qrcode.isDark(row, col) ) count += 1;
+          if (qrcode.isDark(row + 1, col) ) count += 1;
+          if (qrcode.isDark(row, col + 1) ) count += 1;
+          if (qrcode.isDark(row + 1, col + 1) ) count += 1;
+          if (count == 0 || count == 4) {
+            lostPoint += 3;
+          }
+        }
+      }
+
+      // LEVEL3
+
+      for (var row = 0; row < moduleCount; row += 1) {
+        for (var col = 0; col < moduleCount - 6; col += 1) {
+          if (qrcode.isDark(row, col)
+              && !qrcode.isDark(row, col + 1)
+              &&  qrcode.isDark(row, col + 2)
+              &&  qrcode.isDark(row, col + 3)
+              &&  qrcode.isDark(row, col + 4)
+              && !qrcode.isDark(row, col + 5)
+              &&  qrcode.isDark(row, col + 6) ) {
+            lostPoint += 40;
+          }
+        }
+      }
+
+      for (var col = 0; col < moduleCount; col += 1) {
+        for (var row = 0; row < moduleCount - 6; row += 1) {
+          if (qrcode.isDark(row, col)
+              && !qrcode.isDark(row + 1, col)
+              &&  qrcode.isDark(row + 2, col)
+              &&  qrcode.isDark(row + 3, col)
+              &&  qrcode.isDark(row + 4, col)
+              && !qrcode.isDark(row + 5, col)
+              &&  qrcode.isDark(row + 6, col) ) {
+            lostPoint += 40;
+          }
+        }
+      }
+
+      // LEVEL4
+
+      var darkCount = 0;
+
+      for (var col = 0; col < moduleCount; col += 1) {
+        for (var row = 0; row < moduleCount; row += 1) {
+          if (qrcode.isDark(row, col) ) {
+            darkCount += 1;
+          }
+        }
+      }
+
+      var ratio = Math.abs(100 * darkCount / moduleCount / moduleCount - 50) / 5;
+      lostPoint += ratio * 10;
+
+      return lostPoint;
+    };
+
+    return _this;
+  }();
+
+  //---------------------------------------------------------------------
+  // QRMath
+  //---------------------------------------------------------------------
+
+  var QRMath = function() {
+
+    var EXP_TABLE = new Array(256);
+    var LOG_TABLE = new Array(256);
+
+    // initialize tables
+    for (var i = 0; i < 8; i += 1) {
+      EXP_TABLE[i] = 1 << i;
+    }
+    for (var i = 8; i < 256; i += 1) {
+      EXP_TABLE[i] = EXP_TABLE[i - 4]
+        ^ EXP_TABLE[i - 5]
+        ^ EXP_TABLE[i - 6]
+        ^ EXP_TABLE[i - 8];
+    }
+    for (var i = 0; i < 255; i += 1) {
+      LOG_TABLE[EXP_TABLE[i] ] = i;
+    }
+
+    var _this = {};
+
+    _this.glog = function(n) {
+
+      if (n < 1) {
+        throw 'glog(' + n + ')';
+      }
+
+      return LOG_TABLE[n];
+    };
+
+    _this.gexp = function(n) {
+
+      while (n < 0) {
+        n += 255;
+      }
+
+      while (n >= 256) {
+        n -= 255;
+      }
+
+      return EXP_TABLE[n];
+    };
+
+    return _this;
+  }();
+
+  //---------------------------------------------------------------------
+  // qrPolynomial
+  //---------------------------------------------------------------------
+
+  function qrPolynomial(num, shift) {
+
+    if (typeof num.length == 'undefined') {
+      throw num.length + '/' + shift;
+    }
+
+    var _num = function() {
+      var offset = 0;
+      while (offset < num.length && num[offset] == 0) {
+        offset += 1;
+      }
+      var _num = new Array(num.length - offset + shift);
+      for (var i = 0; i < num.length - offset; i += 1) {
+        _num[i] = num[i + offset];
+      }
+      return _num;
+    }();
+
+    var _this = {};
+
+    _this.getAt = function(index) {
+      return _num[index];
+    };
+
+    _this.getLength = function() {
+      return _num.length;
+    };
+
+    _this.multiply = function(e) {
+
+      var num = new Array(_this.getLength() + e.getLength() - 1);
+
+      for (var i = 0; i < _this.getLength(); i += 1) {
+        for (var j = 0; j < e.getLength(); j += 1) {
+          num[i + j] ^= QRMath.gexp(QRMath.glog(_this.getAt(i) ) + QRMath.glog(e.getAt(j) ) );
+        }
+      }
+
+      return qrPolynomial(num, 0);
+    };
+
+    _this.mod = function(e) {
+
+      if (_this.getLength() - e.getLength() < 0) {
+        return _this;
+      }
+
+      var ratio = QRMath.glog(_this.getAt(0) ) - QRMath.glog(e.getAt(0) );
+
+      var num = new Array(_this.getLength() );
+      for (var i = 0; i < _this.getLength(); i += 1) {
+        num[i] = _this.getAt(i);
+      }
+
+      for (var i = 0; i < e.getLength(); i += 1) {
+        num[i] ^= QRMath.gexp(QRMath.glog(e.getAt(i) ) + ratio);
+      }
+
+      // recursive call
+      return qrPolynomial(num, 0).mod(e);
+    };
+
+    return _this;
+  };
+
+  //---------------------------------------------------------------------
+  // QRRSBlock
+  //---------------------------------------------------------------------
+
+  var QRRSBlock = function() {
+
+    var RS_BLOCK_TABLE = [
+
+      // L
+      // M
+      // Q
+      // H
+
+      // 1
+      [1, 26, 19],
+      [1, 26, 16],
+      [1, 26, 13],
+      [1, 26, 9],
+
+      // 2
+      [1, 44, 34],
+      [1, 44, 28],
+      [1, 44, 22],
+      [1, 44, 16],
+
+      // 3
+      [1, 70, 55],
+      [1, 70, 44],
+      [2, 35, 17],
+      [2, 35, 13],
+
+      // 4
+      [1, 100, 80],
+      [2, 50, 32],
+      [2, 50, 24],
+      [4, 25, 9],
+
+      // 5
+      [1, 134, 108],
+      [2, 67, 43],
+      [2, 33, 15, 2, 34, 16],
+      [2, 33, 11, 2, 34, 12],
+
+      // 6
+      [2, 86, 68],
+      [4, 43, 27],
+      [4, 43, 19],
+      [4, 43, 15],
+
+      // 7
+      [2, 98, 78],
+      [4, 49, 31],
+      [2, 32, 14, 4, 33, 15],
+      [4, 39, 13, 1, 40, 14],
+
+      // 8
+      [2, 121, 97],
+      [2, 60, 38, 2, 61, 39],
+      [4, 40, 18, 2, 41, 19],
+      [4, 40, 14, 2, 41, 15],
+
+      // 9
+      [2, 146, 116],
+      [3, 58, 36, 2, 59, 37],
+      [4, 36, 16, 4, 37, 17],
+      [4, 36, 12, 4, 37, 13],
+
+      // 10
+      [2, 86, 68, 2, 87, 69],
+      [4, 69, 43, 1, 70, 44],
+      [6, 43, 19, 2, 44, 20],
+      [6, 43, 15, 2, 44, 16],
+
+      // 11
+      [4, 101, 81],
+      [1, 80, 50, 4, 81, 51],
+      [4, 50, 22, 4, 51, 23],
+      [3, 36, 12, 8, 37, 13],
+
+      // 12
+      [2, 116, 92, 2, 117, 93],
+      [6, 58, 36, 2, 59, 37],
+      [4, 46, 20, 6, 47, 21],
+      [7, 42, 14, 4, 43, 15],
+
+      // 13
+      [4, 133, 107],
+      [8, 59, 37, 1, 60, 38],
+      [8, 44, 20, 4, 45, 21],
+      [12, 33, 11, 4, 34, 12],
+
+      // 14
+      [3, 145, 115, 1, 146, 116],
+      [4, 64, 40, 5, 65, 41],
+      [11, 36, 16, 5, 37, 17],
+      [11, 36, 12, 5, 37, 13],
+
+      // 15
+      [5, 109, 87, 1, 110, 88],
+      [5, 65, 41, 5, 66, 42],
+      [5, 54, 24, 7, 55, 25],
+      [11, 36, 12, 7, 37, 13],
+
+      // 16
+      [5, 122, 98, 1, 123, 99],
+      [7, 73, 45, 3, 74, 46],
+      [15, 43, 19, 2, 44, 20],
+      [3, 45, 15, 13, 46, 16],
+
+      // 17
+      [1, 135, 107, 5, 136, 108],
+      [10, 74, 46, 1, 75, 47],
+      [1, 50, 22, 15, 51, 23],
+      [2, 42, 14, 17, 43, 15],
+
+      // 18
+      [5, 150, 120, 1, 151, 121],
+      [9, 69, 43, 4, 70, 44],
+      [17, 50, 22, 1, 51, 23],
+      [2, 42, 14, 19, 43, 15],
+
+      // 19
+      [3, 141, 113, 4, 142, 114],
+      [3, 70, 44, 11, 71, 45],
+      [17, 47, 21, 4, 48, 22],
+      [9, 39, 13, 16, 40, 14],
+
+      // 20
+      [3, 135, 107, 5, 136, 108],
+      [3, 67, 41, 13, 68, 42],
+      [15, 54, 24, 5, 55, 25],
+      [15, 43, 15, 10, 44, 16],
+
+      // 21
+      [4, 144, 116, 4, 145, 117],
+      [17, 68, 42],
+      [17, 50, 22, 6, 51, 23],
+      [19, 46, 16, 6, 47, 17],
+
+      // 22
+      [2, 139, 111, 7, 140, 112],
+      [17, 74, 46],
+      [7, 54, 24, 16, 55, 25],
+      [34, 37, 13],
+
+      // 23
+      [4, 151, 121, 5, 152, 122],
+      [4, 75, 47, 14, 76, 48],
+      [11, 54, 24, 14, 55, 25],
+      [16, 45, 15, 14, 46, 16],
+
+      // 24
+      [6, 147, 117, 4, 148, 118],
+      [6, 73, 45, 14, 74, 46],
+      [11, 54, 24, 16, 55, 25],
+      [30, 46, 16, 2, 47, 17],
+
+      // 25
+      [8, 132, 106, 4, 133, 107],
+      [8, 75, 47, 13, 76, 48],
+      [7, 54, 24, 22, 55, 25],
+      [22, 45, 15, 13, 46, 16],
+
+      // 26
+      [10, 142, 114, 2, 143, 115],
+      [19, 74, 46, 4, 75, 47],
+      [28, 50, 22, 6, 51, 23],
+      [33, 46, 16, 4, 47, 17],
+
+      // 27
+      [8, 152, 122, 4, 153, 123],
+      [22, 73, 45, 3, 74, 46],
+      [8, 53, 23, 26, 54, 24],
+      [12, 45, 15, 28, 46, 16],
+
+      // 28
+      [3, 147, 117, 10, 148, 118],
+      [3, 73, 45, 23, 74, 46],
+      [4, 54, 24, 31, 55, 25],
+      [11, 45, 15, 31, 46, 16],
+
+      // 29
+      [7, 146, 116, 7, 147, 117],
+      [21, 73, 45, 7, 74, 46],
+      [1, 53, 23, 37, 54, 24],
+      [19, 45, 15, 26, 46, 16],
+
+      // 30
+      [5, 145, 115, 10, 146, 116],
+      [19, 75, 47, 10, 76, 48],
+      [15, 54, 24, 25, 55, 25],
+      [23, 45, 15, 25, 46, 16],
+
+      // 31
+      [13, 145, 115, 3, 146, 116],
+      [2, 74, 46, 29, 75, 47],
+      [42, 54, 24, 1, 55, 25],
+      [23, 45, 15, 28, 46, 16],
+
+      // 32
+      [17, 145, 115],
+      [10, 74, 46, 23, 75, 47],
+      [10, 54, 24, 35, 55, 25],
+      [19, 45, 15, 35, 46, 16],
+
+      // 33
+      [17, 145, 115, 1, 146, 116],
+      [14, 74, 46, 21, 75, 47],
+      [29, 54, 24, 19, 55, 25],
+      [11, 45, 15, 46, 46, 16],
+
+      // 34
+      [13, 145, 115, 6, 146, 116],
+      [14, 74, 46, 23, 75, 47],
+      [44, 54, 24, 7, 55, 25],
+      [59, 46, 16, 1, 47, 17],
+
+      // 35
+      [12, 151, 121, 7, 152, 122],
+      [12, 75, 47, 26, 76, 48],
+      [39, 54, 24, 14, 55, 25],
+      [22, 45, 15, 41, 46, 16],
+
+      // 36
+      [6, 151, 121, 14, 152, 122],
+      [6, 75, 47, 34, 76, 48],
+      [46, 54, 24, 10, 55, 25],
+      [2, 45, 15, 64, 46, 16],
+
+      // 37
+      [17, 152, 122, 4, 153, 123],
+      [29, 74, 46, 14, 75, 47],
+      [49, 54, 24, 10, 55, 25],
+      [24, 45, 15, 46, 46, 16],
+
+      // 38
+      [4, 152, 122, 18, 153, 123],
+      [13, 74, 46, 32, 75, 47],
+      [48, 54, 24, 14, 55, 25],
+      [42, 45, 15, 32, 46, 16],
+
+      // 39
+      [20, 147, 117, 4, 148, 118],
+      [40, 75, 47, 7, 76, 48],
+      [43, 54, 24, 22, 55, 25],
+      [10, 45, 15, 67, 46, 16],
+
+      // 40
+      [19, 148, 118, 6, 149, 119],
+      [18, 75, 47, 31, 76, 48],
+      [34, 54, 24, 34, 55, 25],
+      [20, 45, 15, 61, 46, 16]
+    ];
+
+    var qrRSBlock = function(totalCount, dataCount) {
+      var _this = {};
+      _this.totalCount = totalCount;
+      _this.dataCount = dataCount;
+      return _this;
+    };
+
+    var _this = {};
+
+    var getRsBlockTable = function(typeNumber, errorCorrectionLevel) {
+
+      switch(errorCorrectionLevel) {
+      case QRErrorCorrectionLevel.L :
+        return RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 0];
+      case QRErrorCorrectionLevel.M :
+        return RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 1];
+      case QRErrorCorrectionLevel.Q :
+        return RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 2];
+      case QRErrorCorrectionLevel.H :
+        return RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 3];
+      default :
+        return undefined;
+      }
+    };
+
+    _this.getRSBlocks = function(typeNumber, errorCorrectionLevel) {
+
+      var rsBlock = getRsBlockTable(typeNumber, errorCorrectionLevel);
+
+      if (typeof rsBlock == 'undefined') {
+        throw 'bad rs block @ typeNumber:' + typeNumber +
+            '/errorCorrectionLevel:' + errorCorrectionLevel;
+      }
+
+      var length = rsBlock.length / 3;
+
+      var list = [];
+
+      for (var i = 0; i < length; i += 1) {
+
+        var count = rsBlock[i * 3 + 0];
+        var totalCount = rsBlock[i * 3 + 1];
+        var dataCount = rsBlock[i * 3 + 2];
+
+        for (var j = 0; j < count; j += 1) {
+          list.push(qrRSBlock(totalCount, dataCount) );
+        }
+      }
+
+      return list;
+    };
+
+    return _this;
+  }();
+
+  //---------------------------------------------------------------------
+  // qrBitBuffer
+  //---------------------------------------------------------------------
+
+  var qrBitBuffer = function() {
+
+    var _buffer = [];
+    var _length = 0;
+
+    var _this = {};
+
+    _this.getBuffer = function() {
+      return _buffer;
+    };
+
+    _this.getAt = function(index) {
+      var bufIndex = Math.floor(index / 8);
+      return ( (_buffer[bufIndex] >>> (7 - index % 8) ) & 1) == 1;
+    };
+
+    _this.put = function(num, length) {
+      for (var i = 0; i < length; i += 1) {
+        _this.putBit( ( (num >>> (length - i - 1) ) & 1) == 1);
+      }
+    };
+
+    _this.getLengthInBits = function() {
+      return _length;
+    };
+
+    _this.putBit = function(bit) {
+
+      var bufIndex = Math.floor(_length / 8);
+      if (_buffer.length <= bufIndex) {
+        _buffer.push(0);
+      }
+
+      if (bit) {
+        _buffer[bufIndex] |= (0x80 >>> (_length % 8) );
+      }
+
+      _length += 1;
+    };
+
+    return _this;
+  };
+
+  //---------------------------------------------------------------------
+  // qrNumber
+  //---------------------------------------------------------------------
+
+  var qrNumber = function(data) {
+
+    var _mode = QRMode.MODE_NUMBER;
+    var _data = data;
+
+    var _this = {};
+
+    _this.getMode = function() {
+      return _mode;
+    };
+
+    _this.getLength = function(buffer) {
+      return _data.length;
+    };
+
+    _this.write = function(buffer) {
+
+      var data = _data;
+
+      var i = 0;
+
+      while (i + 2 < data.length) {
+        buffer.put(strToNum(data.substring(i, i + 3) ), 10);
+        i += 3;
+      }
+
+      if (i < data.length) {
+        if (data.length - i == 1) {
+          buffer.put(strToNum(data.substring(i, i + 1) ), 4);
+        } else if (data.length - i == 2) {
+          buffer.put(strToNum(data.substring(i, i + 2) ), 7);
+        }
+      }
+    };
+
+    var strToNum = function(s) {
+      var num = 0;
+      for (var i = 0; i < s.length; i += 1) {
+        num = num * 10 + chatToNum(s.charAt(i) );
+      }
+      return num;
+    };
+
+    var chatToNum = function(c) {
+      if ('0' <= c && c <= '9') {
+        return c.charCodeAt(0) - '0'.charCodeAt(0);
+      }
+      throw 'illegal char :' + c;
+    };
+
+    return _this;
+  };
+
+  //---------------------------------------------------------------------
+  // qrAlphaNum
+  //---------------------------------------------------------------------
+
+  var qrAlphaNum = function(data) {
+
+    var _mode = QRMode.MODE_ALPHA_NUM;
+    var _data = data;
+
+    var _this = {};
+
+    _this.getMode = function() {
+      return _mode;
+    };
+
+    _this.getLength = function(buffer) {
+      return _data.length;
+    };
+
+    _this.write = function(buffer) {
+
+      var s = _data;
+
+      var i = 0;
+
+      while (i + 1 < s.length) {
+        buffer.put(
+          getCode(s.charAt(i) ) * 45 +
+          getCode(s.charAt(i + 1) ), 11);
+        i += 2;
+      }
+
+      if (i < s.length) {
+        buffer.put(getCode(s.charAt(i) ), 6);
+      }
+    };
+
+    var getCode = function(c) {
+
+      if ('0' <= c && c <= '9') {
+        return c.charCodeAt(0) - '0'.charCodeAt(0);
+      } else if ('A' <= c && c <= 'Z') {
+        return c.charCodeAt(0) - 'A'.charCodeAt(0) + 10;
+      } else {
+        switch (c) {
+        case ' ' : return 36;
+        case '$' : return 37;
+        case '%' : return 38;
+        case '*' : return 39;
+        case '+' : return 40;
+        case '-' : return 41;
+        case '.' : return 42;
+        case '/' : return 43;
+        case ':' : return 44;
+        default :
+          throw 'illegal char :' + c;
+        }
+      }
+    };
+
+    return _this;
+  };
+
+  //---------------------------------------------------------------------
+  // qr8BitByte
+  //---------------------------------------------------------------------
+
+  var qr8BitByte = function(data) {
+
+    var _mode = QRMode.MODE_8BIT_BYTE;
+    var _data = data;
+    var _bytes = qrcode.stringToBytes(data);
+
+    var _this = {};
+
+    _this.getMode = function() {
+      return _mode;
+    };
+
+    _this.getLength = function(buffer) {
+      return _bytes.length;
+    };
+
+    _this.write = function(buffer) {
+      for (var i = 0; i < _bytes.length; i += 1) {
+        buffer.put(_bytes[i], 8);
+      }
+    };
+
+    return _this;
+  };
+
+  //---------------------------------------------------------------------
+  // qrKanji
+  //---------------------------------------------------------------------
+
+  var qrKanji = function(data) {
+
+    var _mode = QRMode.MODE_KANJI;
+    var _data = data;
+
+    var stringToBytes = qrcode.stringToBytesFuncs['SJIS'];
+    if (!stringToBytes) {
+      throw 'sjis not supported.';
+    }
+    !function(c, code) {
+      // self test for sjis support.
+      var test = stringToBytes(c);
+      if (test.length != 2 || ( (test[0] << 8) | test[1]) != code) {
+        throw 'sjis not supported.';
+      }
+    }('\u53cb', 0x9746);
+
+    var _bytes = stringToBytes(data);
+
+    var _this = {};
+
+    _this.getMode = function() {
+      return _mode;
+    };
+
+    _this.getLength = function(buffer) {
+      return ~~(_bytes.length / 2);
+    };
+
+    _this.write = function(buffer) {
+
+      var data = _bytes;
+
+      var i = 0;
+
+      while (i + 1 < data.length) {
+
+        var c = ( (0xff & data[i]) << 8) | (0xff & data[i + 1]);
+
+        if (0x8140 <= c && c <= 0x9FFC) {
+          c -= 0x8140;
+        } else if (0xE040 <= c && c <= 0xEBBF) {
+          c -= 0xC140;
+        } else {
+          throw 'illegal char at ' + (i + 1) + '/' + c;
+        }
+
+        c = ( (c >>> 8) & 0xff) * 0xC0 + (c & 0xff);
+
+        buffer.put(c, 13);
+
+        i += 2;
+      }
+
+      if (i < data.length) {
+        throw 'illegal char at ' + (i + 1);
+      }
+    };
+
+    return _this;
+  };
+
+  //=====================================================================
+  // GIF Support etc.
+  //
+
+  //---------------------------------------------------------------------
+  // byteArrayOutputStream
+  //---------------------------------------------------------------------
+
+  var byteArrayOutputStream = function() {
+
+    var _bytes = [];
+
+    var _this = {};
+
+    _this.writeByte = function(b) {
+      _bytes.push(b & 0xff);
+    };
+
+    _this.writeShort = function(i) {
+      _this.writeByte(i);
+      _this.writeByte(i >>> 8);
+    };
+
+    _this.writeBytes = function(b, off, len) {
+      off = off || 0;
+      len = len || b.length;
+      for (var i = 0; i < len; i += 1) {
+        _this.writeByte(b[i + off]);
+      }
+    };
+
+    _this.writeString = function(s) {
+      for (var i = 0; i < s.length; i += 1) {
+        _this.writeByte(s.charCodeAt(i) );
+      }
+    };
+
+    _this.toByteArray = function() {
+      return _bytes;
+    };
+
+    _this.toString = function() {
+      var s = '';
+      s += '[';
+      for (var i = 0; i < _bytes.length; i += 1) {
+        if (i > 0) {
+          s += ',';
+        }
+        s += _bytes[i];
+      }
+      s += ']';
+      return s;
+    };
+
+    return _this;
+  };
+
+  //---------------------------------------------------------------------
+  // base64EncodeOutputStream
+  //---------------------------------------------------------------------
+
+  var base64EncodeOutputStream = function() {
+
+    var _buffer = 0;
+    var _buflen = 0;
+    var _length = 0;
+    var _base64 = '';
+
+    var _this = {};
+
+    var writeEncoded = function(b) {
+      _base64 += String.fromCharCode(encode(b & 0x3f) );
+    };
+
+    var encode = function(n) {
+      if (n < 0) {
+        // error.
+      } else if (n < 26) {
+        return 0x41 + n;
+      } else if (n < 52) {
+        return 0x61 + (n - 26);
+      } else if (n < 62) {
+        return 0x30 + (n - 52);
+      } else if (n == 62) {
+        return 0x2b;
+      } else if (n == 63) {
+        return 0x2f;
+      }
+      throw 'n:' + n;
+    };
+
+    _this.writeByte = function(n) {
+
+      _buffer = (_buffer << 8) | (n & 0xff);
+      _buflen += 8;
+      _length += 1;
+
+      while (_buflen >= 6) {
+        writeEncoded(_buffer >>> (_buflen - 6) );
+        _buflen -= 6;
+      }
+    };
+
+    _this.flush = function() {
+
+      if (_buflen > 0) {
+        writeEncoded(_buffer << (6 - _buflen) );
+        _buffer = 0;
+        _buflen = 0;
+      }
+
+      if (_length % 3 != 0) {
+        // padding
+        var padlen = 3 - _length % 3;
+        for (var i = 0; i < padlen; i += 1) {
+          _base64 += '=';
+        }
+      }
+    };
+
+    _this.toString = function() {
+      return _base64;
+    };
+
+    return _this;
+  };
+
+  //---------------------------------------------------------------------
+  // base64DecodeInputStream
+  //---------------------------------------------------------------------
+
+  var base64DecodeInputStream = function(str) {
+
+    var _str = str;
+    var _pos = 0;
+    var _buffer = 0;
+    var _buflen = 0;
+
+    var _this = {};
+
+    _this.read = function() {
+
+      while (_buflen < 8) {
+
+        if (_pos >= _str.length) {
+          if (_buflen == 0) {
+            return -1;
+          }
+          throw 'unexpected end of file./' + _buflen;
+        }
+
+        var c = _str.charAt(_pos);
+        _pos += 1;
+
+        if (c == '=') {
+          _buflen = 0;
+          return -1;
+        } else if (c.match(/^\s$/) ) {
+          // ignore if whitespace.
+          continue;
+        }
+
+        _buffer = (_buffer << 6) | decode(c.charCodeAt(0) );
+        _buflen += 6;
+      }
+
+      var n = (_buffer >>> (_buflen - 8) ) & 0xff;
+      _buflen -= 8;
+      return n;
+    };
+
+    var decode = function(c) {
+      if (0x41 <= c && c <= 0x5a) {
+        return c - 0x41;
+      } else if (0x61 <= c && c <= 0x7a) {
+        return c - 0x61 + 26;
+      } else if (0x30 <= c && c <= 0x39) {
+        return c - 0x30 + 52;
+      } else if (c == 0x2b) {
+        return 62;
+      } else if (c == 0x2f) {
+        return 63;
+      } else {
+        throw 'c:' + c;
+      }
+    };
+
+    return _this;
+  };
+
+  //---------------------------------------------------------------------
+  // gifImage (B/W)
+  //---------------------------------------------------------------------
+
+  var gifImage = function(width, height) {
+
+    var _width = width;
+    var _height = height;
+    var _data = new Array(width * height);
+
+    var _this = {};
+
+    _this.setPixel = function(x, y, pixel) {
+      _data[y * _width + x] = pixel;
+    };
+
+    _this.write = function(out) {
+
+      //---------------------------------
+      // GIF Signature
+
+      out.writeString('GIF87a');
+
+      //---------------------------------
+      // Screen Descriptor
+
+      out.writeShort(_width);
+      out.writeShort(_height);
+
+      out.writeByte(0x80); // 2bit
+      out.writeByte(0);
+      out.writeByte(0);
+
+      //---------------------------------
+      // Global Color Map
+
+      // black
+      out.writeByte(0x00);
+      out.writeByte(0x00);
+      out.writeByte(0x00);
+
+      // white
+      out.writeByte(0xff);
+      out.writeByte(0xff);
+      out.writeByte(0xff);
+
+      //---------------------------------
+      // Image Descriptor
+
+      out.writeString(',');
+      out.writeShort(0);
+      out.writeShort(0);
+      out.writeShort(_width);
+      out.writeShort(_height);
+      out.writeByte(0);
+
+      //---------------------------------
+      // Local Color Map
+
+      //---------------------------------
+      // Raster Data
+
+      var lzwMinCodeSize = 2;
+      var raster = getLZWRaster(lzwMinCodeSize);
+
+      out.writeByte(lzwMinCodeSize);
+
+      var offset = 0;
+
+      while (raster.length - offset > 255) {
+        out.writeByte(255);
+        out.writeBytes(raster, offset, 255);
+        offset += 255;
+      }
+
+      out.writeByte(raster.length - offset);
+      out.writeBytes(raster, offset, raster.length - offset);
+      out.writeByte(0x00);
+
+      //---------------------------------
+      // GIF Terminator
+      out.writeString(';');
+    };
+
+    var bitOutputStream = function(out) {
+
+      var _out = out;
+      var _bitLength = 0;
+      var _bitBuffer = 0;
+
+      var _this = {};
+
+      _this.write = function(data, length) {
+
+        if ( (data >>> length) != 0) {
+          throw 'length over';
+        }
+
+        while (_bitLength + length >= 8) {
+          _out.writeByte(0xff & ( (data << _bitLength) | _bitBuffer) );
+          length -= (8 - _bitLength);
+          data >>>= (8 - _bitLength);
+          _bitBuffer = 0;
+          _bitLength = 0;
+        }
+
+        _bitBuffer = (data << _bitLength) | _bitBuffer;
+        _bitLength = _bitLength + length;
+      };
+
+      _this.flush = function() {
+        if (_bitLength > 0) {
+          _out.writeByte(_bitBuffer);
+        }
+      };
+
+      return _this;
+    };
+
+    var getLZWRaster = function(lzwMinCodeSize) {
+
+      var clearCode = 1 << lzwMinCodeSize;
+      var endCode = (1 << lzwMinCodeSize) + 1;
+      var bitLength = lzwMinCodeSize + 1;
+
+      // Setup LZWTable
+      var table = lzwTable();
+
+      for (var i = 0; i < clearCode; i += 1) {
+        table.add(String.fromCharCode(i) );
+      }
+      table.add(String.fromCharCode(clearCode) );
+      table.add(String.fromCharCode(endCode) );
+
+      var byteOut = byteArrayOutputStream();
+      var bitOut = bitOutputStream(byteOut);
+
+      // clear code
+      bitOut.write(clearCode, bitLength);
+
+      var dataIndex = 0;
+
+      var s = String.fromCharCode(_data[dataIndex]);
+      dataIndex += 1;
+
+      while (dataIndex < _data.length) {
+
+        var c = String.fromCharCode(_data[dataIndex]);
+        dataIndex += 1;
+
+        if (table.contains(s + c) ) {
+
+          s = s + c;
+
+        } else {
+
+          bitOut.write(table.indexOf(s), bitLength);
+
+          if (table.size() < 0xfff) {
+
+            if (table.size() == (1 << bitLength) ) {
+              bitLength += 1;
+            }
+
+            table.add(s + c);
+          }
+
+          s = c;
+        }
+      }
+
+      bitOut.write(table.indexOf(s), bitLength);
+
+      // end code
+      bitOut.write(endCode, bitLength);
+
+      bitOut.flush();
+
+      return byteOut.toByteArray();
+    };
+
+    var lzwTable = function() {
+
+      var _map = {};
+      var _size = 0;
+
+      var _this = {};
+
+      _this.add = function(key) {
+        if (_this.contains(key) ) {
+          throw 'dup key:' + key;
+        }
+        _map[key] = _size;
+        _size += 1;
+      };
+
+      _this.size = function() {
+        return _size;
+      };
+
+      _this.indexOf = function(key) {
+        return _map[key];
+      };
+
+      _this.contains = function(key) {
+        return typeof _map[key] != 'undefined';
+      };
+
+      return _this;
+    };
+
+    return _this;
+  };
+
+  var createDataURL = function(width, height, getPixel) {
+    var gif = gifImage(width, height);
+    for (var y = 0; y < height; y += 1) {
+      for (var x = 0; x < width; x += 1) {
+        gif.setPixel(x, y, getPixel(x, y) );
+      }
+    }
+
+    var b = byteArrayOutputStream();
+    gif.write(b);
+
+    var base64 = base64EncodeOutputStream();
+    var bytes = b.toByteArray();
+    for (var i = 0; i < bytes.length; i += 1) {
+      base64.writeByte(bytes[i]);
+    }
+    base64.flush();
+
+    return 'data:image/gif;base64,' + base64;
+  };
+
+  //---------------------------------------------------------------------
+  // returns qrcode function.
+
+  return qrcode;
+}();
+
+// multibyte support
+!function() {
+
+  qrcode.stringToBytesFuncs['UTF-8'] = function(s) {
+    // http://stackoverflow.com/questions/18729405/how-to-convert-utf8-string-to-byte-array
+    function toUTF8Array(str) {
+      var utf8 = [];
+      for (var i=0; i < str.length; i++) {
+        var charcode = str.charCodeAt(i);
+        if (charcode < 0x80) utf8.push(charcode);
+        else if (charcode < 0x800) {
+          utf8.push(0xc0 | (charcode >> 6),
+              0x80 | (charcode & 0x3f));
+        }
+        else if (charcode < 0xd800 || charcode >= 0xe000) {
+          utf8.push(0xe0 | (charcode >> 12),
+              0x80 | ((charcode>>6) & 0x3f),
+              0x80 | (charcode & 0x3f));
+        }
+        // surrogate pair
+        else {
+          i++;
+          // UTF-16 encodes 0x10000-0x10FFFF by
+          // subtracting 0x10000 and splitting the
+          // 20 bits of 0x0-0xFFFFF into two halves
+          charcode = 0x10000 + (((charcode & 0x3ff)<<10)
+            | (str.charCodeAt(i) & 0x3ff));
+          utf8.push(0xf0 | (charcode >>18),
+              0x80 | ((charcode>>12) & 0x3f),
+              0x80 | ((charcode>>6) & 0x3f),
+              0x80 | (charcode & 0x3f));
+        }
+      }
+      return utf8;
+    }
+    return toUTF8Array(s);
+  };
+
+}();
+
+(function (factory) {
+  if (typeof define === 'function' && define.amd) {
+      define([], factory);
+  } else if (typeof exports === 'object') {
+      module.exports = factory();
+  }
+}(function () {
+    return qrcode;
+}));
+
+</script>
+<script>
+"use strict";
+/* ============================ state ============================ */
+const CONFIG = {"A": {"ahhrs": 3.5, "alloc": 250, "band": 0.1, "cf2": 0.65, "cf3": 0.35, "circ": 1.3, "clusterR": 60, "cond": 60, "expandMin": 3, "go": 75, "loaded": 75, "local": 0.5, "mf2": 0.7, "mf3": 0.3, "mile": 0.8, "mobil": 0.5, "officeFixed": 300000, "officeMin": 8, "pb1": 0.5, "pb2": 0.75, "pb3": 1, "pf1": 1, "pf2": 0.7, "pf3": 0.4, "prem": 1.5, "prod": 1600, "rot": 5, "rotmin": 3, "satFixed": 50000, "speed": 45, "tgt": 0.3, "ucomf": 0.7, "umax": 0.85, "umid": 0.8, "walk": 0.1, "wcap": 30, "wmar": 25, "won": 15, "wprox": 30}, "tiers": [{"name": "A - Time & Material", "target": 0, "after": 0}, {"name": "B - Phone & Remote", "target": 0, "after": 0}, {"name": "C - Preferred", "target": 4, "after": 1}, {"name": "D - Premier", "target": 2, "after": 1}], "offices": [{"name": "Granite City", "lat": 38.698242, "lon": -90.156122, "mech": 35, "ctrl": 3, "remote": 2, "cm": 25600, "cc": 2800}, {"name": "Charlotte NC", "lat": 35.361208, "lon": -80.829341, "mech": 15, "ctrl": 6, "remote": 2, "cm": 18000, "cc": 4200}, {"name": "Chesterfield MO", "lat": 38.65655, "lon": -90.563008, "mech": 5, "ctrl": 12, "remote": 1, "cm": 6500, "cc": 14500}, {"name": "Nashville TN", "lat": 36.127915, "lon": -86.725964, "mech": 22, "ctrl": 8, "remote": 1, "cm": 20000, "cc": 8300}], "sendTo": "", "stamp": "2026-11-13"};
+const S = { A: { ...DEFAULT_ASSUMPTIONS, ...CONFIG.A }, tiers: CONFIG.tiers.map((t) => ({ ...t })), offices: CONFIG.offices.map((o) => ({ ...o })), pursuits: [] };
+const ENV = { canWrite: true, isAdmin: false, me: null, storage: true, sendTo: CONFIG.sendTo || "", who: "" };
+let R = null, view = "pursuits", filter = "all", pendingRender = false, mapFocus = "all", mapRing = "D";
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const pct = (x) => (x === null || x === undefined) ? "n/a" : Math.round(x * 100) + "%";
+const money = (x) => (x === null || x === undefined || isNaN(x)) ? "n/a" : (x < 0 ? "-$" : "$") + Math.round(Math.abs(x)).toLocaleString("en-US");
+const REC = { "GO": "Go", "CONDITIONAL": "Conditional", "NO-GO": "No-go", "INCOMPLETE DATA": "Incomplete" };
+const recCls = (r) => r === "GO" ? "go" : r === "CONDITIONAL" ? "conditional" : r === "NO-GO" ? "no-go" : "idle";
+const ICON = {
+  list: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/></svg>',
+  map: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14"/></svg>',
+  growth: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>',
+  setup: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg>',
+  x: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>',
+  clip: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="4" width="12" height="17" rx="1"/><path d="M9 4h6v3H9z"/></svg>',
+  loc: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>'
+};
+function toast(msg) {
+  const t = document.createElement("div"); t.className = "toast"; t.textContent = msg; $("toastHost").appendChild(t);
+  setTimeout(() => t.remove(), 2600);
+}
+
+/* ============================ data layer (this phone only) ============================ */
+const KEY = "pursuit-screen-standalone-v1";
+function loadLocal() {
+  try {
+    const d = JSON.parse(localStorage.getItem(KEY) || "null");
+    if (d) { S.pursuits = Array.isArray(d.pursuits) ? d.pursuits : []; ENV.sendTo = d.sendTo || ENV.sendTo; ENV.who = d.who || ""; }
+  } catch (e) { ENV.storage = false; }
+}
+function persist() {
+  try { localStorage.setItem(KEY, JSON.stringify({ pursuits: S.pursuits, sendTo: ENV.sendTo, who: ENV.who })); ENV.storage = true; } catch (e) { ENV.storage = false; }
+  setSync();
+}
+const unsent = () => S.pursuits.filter((p) => !p.sentAt);
+function setSync() {
+  const el = $("sync"), n = unsent().length;
+  el.className = "sync " + (!ENV.storage ? "warn" : n ? "warn" : "live");
+  el.querySelector("span").textContent = !ENV.storage ? "Not saving on this phone" : n ? n + " not sent yet" : "Saved on this phone";
+}
+function sortedPursuits() { return [...S.pursuits].sort((a, b) => num(a.createdAt) - num(b.createdAt) || String(a.id).localeCompare(String(b.id))); }
+function recompute() {
+  S.pursuits = sortedPursuits();
+  R = evalAll(S);
+  if (document.activeElement && $("main").contains(document.activeElement) && /^(INPUT|SELECT|TEXTAREA)$/.test(document.activeElement.tagName)) { pendingRender = true; return; }
+  render();
+}
+async function savePursuit(p) {
+  const id = p.id || ("p" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6));
+  const rec = { ...p, id };
+  Object.keys(rec).forEach((k) => { if (rec[k] === undefined) rec[k] = null; });
+  const i = S.pursuits.findIndex((x) => x.id === id);
+  if (i >= 0) S.pursuits[i] = rec; else S.pursuits.push(rec);
+  persist(); recompute(); return id;
+}
+async function deletePursuit(id) { S.pursuits = S.pursuits.filter((x) => x.id !== id); persist(); recompute(); }
+function markSent(list) { const ids = new Set(list.map((p) => p.id)); S.pursuits.forEach((p) => { if (ids.has(p.id)) p.sentAt = Date.now(); }); persist(); recompute(); }
+
+/* ============================ shared UI bits ============================ */
+function lampClass(g) { return (g === "PASS" || g === "N/A") ? "pass" : g === "SUPPLEMENT" ? "warn" : g === "FAIL" ? "fail" : ""; }
+function lampsHTML(r) {
+  const L = [["Range", r.g1], ["Capacity", r.g2], ["On-call", r.g3], ["Margin", r.g4]];
+  return '<div class="lamps">' + L.map(([n, g]) => '<span class="lamp ' + lampClass(g) + '"><i></i>' + n + "</span>").join("") + "</div>";
+}
+function gateText(r) {
+  const rng = r.g1 === "N/A" ? "No on-site clock" : r.g1 === "NO COORDS" ? "No location yet" : r.hrs.toFixed(1) + " of " + r.allowed.toFixed(1) + " hr drive";
+  const capN = r.mutil === null && r.cutil === null ? "No hours entered" : pct(r.util) + " busiest skill after win";
+  const oc = r.g3 === "N/A" ? (r.ahReq ? "Not applicable" : "No after-hours field coverage") : r.depth + " techs on the rotation";
+  const mg = r.margin === null ? "Enter revenue" : pct(r.margin) + " (target " + pct(S.A.tgt) + ")";
+  return { rng, capN, oc, mg };
+}
+function sheetOpen(title, body, foot) {
+  sheetClose();
+  const h = document.createElement("div"); h.className = "sheet-wrap"; h.id = "sheetWrap";
+  h.innerHTML = '<div class="sheet" role="dialog" aria-modal="true" aria-label="' + esc(title) + '"><div class="sheet-head"><h2>' + esc(title) + '</h2><button class="x" type="button" aria-label="Close" id="sheetX">' + ICON.x + '</button></div><div class="sheet-body" id="sheetBody">' + body + "</div>" + (foot ? '<div class="sheet-foot" id="sheetFoot">' + foot + "</div>" : "") + "</div>";
+  $("sheetHost").appendChild(h);
+  h.addEventListener("click", (e) => { if (e.target === h) sheetClose(); });
+  $("sheetX").addEventListener("click", sheetClose);
+  document.body.style.overflow = "hidden";
+}
+function sheetClose() { const w = $("sheetWrap"); if (w) w.remove(); document.body.style.overflow = ""; if (pendingRender) { pendingRender = false; render(); } }
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") sheetClose(); });
+
+/* ============================ views ============================ */
+function render() {
+  $("tabs").innerHTML = [["pursuits", "Pursuits", ICON.list], ["map", "Map", ICON.map], ["setup", "More", ICON.setup]]
+    .map(([k, n, ic]) => '<button type="button" data-tab="' + k + '"' + (view === k ? ' aria-current="page"' : "") + ">" + ic + "<span>" + n + "</span></button>").join("");
+  $("tabs").querySelectorAll("button").forEach((b) => b.addEventListener("click", () => { view = b.dataset.tab; window.scrollTo(0, 0); render(); }));
+  $("fab").style.display = (view === "pursuits" || view === "map") ? "flex" : "none";
+  if (!R) return;
+  const extra = ENV.storage ? "" : '<div class="banner">This browser can’t save data (private browsing?). Pursuits will be lost when you close the page, so send them before leaving.</div>';
+  $("main").innerHTML = extra + (view === "pursuits" ? vPursuits() : view === "map" ? vMap() : vSetup());
+  bindView();
+}
+function bindView() {
+  document.querySelectorAll("[data-open]").forEach((b) => b.addEventListener("click", () => openDetail(b.dataset.open)));
+  document.querySelectorAll("[data-filter]").forEach((b) => b.addEventListener("click", () => { filter = b.dataset.filter; render(); }));
+  const sa = $("bSendAll"); if (sa) sa.addEventListener("click", () => openSend(unsent()));
+  if (view === "setup") bindSetup();
+  if (view === "map") {
+    const f = $("mapFocus"), r = $("mapRing");
+    if (f) f.addEventListener("change", () => { mapFocus = f.value; render(); });
+    if (r) r.addEventListener("change", () => { mapRing = r.value; render(); });
+  }
+}
+function sendBar() {
+  const n = unsent().length; if (!n) return "";
+  return '<div class="banner info" style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span>' + n + " not sent to the office yet</span>" +
+    '<button class="btn pri" id="bSendAll" type="button" style="min-height:40px">Send</button></div>';
+}
+const ORDER = { "GO": 0, "CONDITIONAL": 1, "NO-GO": 2, "INCOMPLETE DATA": 3 };
+function vPursuits() {
+  const res = R.results;
+  const cnt = (k) => res.filter((r) => r.rec === k).length;
+  let html = sendBar();
+  if (!S.offices.length) html += '<div class="banner info">Add your offices first (Setup tab) so pursuits can be screened against them.</div>';
+  if (!res.length) {
+    return html + '<div class="empty"><h2>No pursuits yet</h2><p>Drop a pin from Apple Maps or Google Maps to screen your first contract opportunity.</p></div>';
+  }
+  html += '<div class="seg" role="group" aria-label="Filter by result">' +
+    [["all", "All", res.length], ["GO", "Go", cnt("GO")], ["CONDITIONAL", "Conditional", cnt("CONDITIONAL")], ["NO-GO", "No-go", cnt("NO-GO")]]
+      .map(([k, n, c]) => '<button type="button" data-filter="' + k + '" aria-pressed="' + (filter === k) + '"><b>' + c + "</b>" + n + "</button>").join("") + "</div>";
+  const shown = res.map((r, i) => ({ r, i })).filter((x) => filter === "all" || x.r.rec === filter)
+    .sort((a, b) => (ORDER[a.r.rec] - ORDER[b.r.rec]) || (b.r.score - a.r.score));
+  if (!shown.length) return html + '<div class="empty"><h2>Nothing here</h2><p>No pursuits have this result.</p></div>';
+  html += '<ul class="list">' + shown.map(({ r }) => {
+    const p = r.p, c = recCls(r.rec);
+    const sub = r.ok ? "From " + esc(r.office) + ", " + r.hrs.toFixed(1) + " hr drive" : "Location needed";
+    return '<li><button class="row ' + c + '" type="button" data-open="' + esc(p.id) + '"><span class="stripe"></span><span class="mid"><span class="hd" style="display:block"><p class="nm">' + esc(p.name) + '</p><p class="sub">' + sub + "</p></span>" + (r.ok ? lampsHTML(r) : "") + '</span><span class="sc"><b>' + (r.ok ? Math.round(r.score) : "–") + '</b><span class="chip ' + c + '">' + REC[r.rec] + "</span></span></button></li>";
+  }).join("") + "</ul>";
+  return html;
+}
+
+/* ---------- detail ---------- */
+function mapLinks(p) {
+  const a = "https://maps.apple.com/?ll=" + p.lat + "," + p.lon + "&q=" + encodeURIComponent(p.name || "Site");
+  const g = "https://www.google.com/maps/search/?api=1&query=" + p.lat + "," + p.lon;
+  return '<a class="btn" href="' + a + '" target="_blank" rel="noopener">Open in Apple Maps</a><a class="btn" href="' + g + '" target="_blank" rel="noopener">Open in Google Maps</a>';
+}
+function openDetail(id) {
+  const r = R.results.find((x) => x.p.id === id); if (!r) return;
+  const p = r.p, c = recCls(r.rec), g = r.ok ? gateText(r) : null;
+  let body = '<div class="verdict-big ' + c + '"><b>' + REC[r.rec] + "</b><span>" + (r.ok ? "Score " + Math.round(r.score) + " of 100" : "") + "</span></div>";
+  if (r.ok) {
+    body += '<div class="gates">' +
+      [["Range", r.g1, g.rng], ["Capacity", r.g2, g.capN], ["On-call", r.g3, g.oc], ["Margin", r.g4, g.mg]]
+        .map(([n, gg, t]) => '<div class="gate"><span class="lamp ' + lampClass(gg) + '"><i></i>' + n + "</span><p>" + esc(t) + "</p></div>").join("") + "</div>";
+  }
+  body += '<h3 class="sec">What to do</h3><ul class="acts">' + r.actions.map((a) => "<li>" + esc(a) + "</li>").join("") + "</ul>";
+  if (r.ok) {
+    body += '<h3 class="sec">Why</h3><ul class="why">' + r.findings.map((a) => "<li>" + esc(a) + "</li>").join("") + "</ul>";
+    const hire = (m, cc) => (num(m) || num(cc)) ? (num(m) + " mechanic, " + num(cc) + " controls") : "None";
+    body += '<h3 class="sec">Numbers</h3><dl class="kv">' +
+      "<dt>Served from</dt><dd>" + esc(r.office) + "</dd><dt>Road distance</dt><dd>" + Math.round(r.miles) + " mi, " + r.hrs.toFixed(1) + " hr</dd>" +
+      "<dt>Offices in range</dt><dd>" + (r.target === 0 ? "No on-site clock" : r.inRangeCount) + "</dd>" +
+      (p.ptype ? "<dt>Project</dt><dd>" + esc(p.ptype) + (has(p.psize) ? ", " + Number(p.psize).toLocaleString("en-US") : "") + "</dd>" : "") + "<dt>Annual revenue</dt><dd>" + money(num(p.rev)) + "</dd><dt>Estimated cost</dt><dd>" + money(r.cost) + "</dd><dt>Margin</dt><dd>" + pct(r.margin) + "</dd>" +
+      "<dt>Revenue for target margin</dt><dd>" + money(r.revneed) + "</dd>" +
+      (r.hpm === null ? "" : "<dt>Hires to clear gates</dt><dd>" + hire(r.hpm, r.hpc) + "</dd><dt>Hires for comfortable fit</dt><dd>" + hire(r.hsm, r.hsc) + "</dd>") +
+      "</dl>";
+  }
+  if (p.notes) body += '<h3 class="sec">Notes</h3><p>' + esc(p.notes) + "</p>";
+  body += '<h3 class="sec">Location</h3><p class="note">' + (has(p.lat) ? Number(p.lat).toFixed(5) + ", " + Number(p.lon).toFixed(5) : "Not set") + '. ' + (p.sentAt ? 'Sent ' + new Date(p.sentAt).toLocaleDateString() + '.' : 'Not sent to the office yet.') + '</p>';
+  if (has(p.lat)) body += '<div class="btns">' + mapLinks(p) + "</div>";
+  const foot = ENV.canWrite ? '<div class="btns" style="margin:0"><button class="btn pri" type="button" id="dSend" style="flex:1">Send</button><button class="btn" type="button" id="dEdit">Edit</button><button class="btn danger" type="button" id="dDel">Delete</button></div>' : "";
+  sheetOpen(p.name || "Pursuit", body, foot);
+  if (ENV.canWrite) {
+    $("dEdit").addEventListener("click", () => openForm(S.pursuits.find((x) => x.id === id)));
+    $("dSend").addEventListener("click", () => openSend([p]));
+    const del = $("dDel"); let armed = false;
+    del.addEventListener("click", async () => {
+      if (!armed) { armed = true; del.textContent = "Tap again to delete"; del.classList.add("armed"); setTimeout(() => { armed = false; del.textContent = "Delete"; del.classList.remove("armed"); }, 3500); return; }
+      try { await deletePursuit(id); sheetClose(); toast("Pursuit deleted"); } catch (e) { toast("Couldn’t delete: you may not have edit access."); }
+    });
+  }
+}
+
+/* ---------- add / edit form ---------- */
+function openForm(existing) {
+  const p = existing ? { ...existing } : { tier: S.tiers[S.tiers.length - 1].name, ah: "" };
+  const isNew = !existing;
+  const f = (k, label, extra) => '<label class="fld"><span>' + label + '</span><input data-f="' + k + '" inputmode="decimal" autocomplete="off" value="' + esc(p[k] ?? "") + '"' + (extra || "") + "></label>";
+  const body =
+    '<h3 class="sec">Location</h3>' +
+    '<label class="fld"><span>Paste a map link or coordinates</span><textarea id="loc" rows="2" placeholder="Apple Maps or Google Maps link, or 38.6982, -90.1561"></textarea><small>Drop a pin, tap Share, copy the link, and paste it here. Short links (maps.app.goo.gl) carry no coordinates; copy the pin’s coordinates instead.</small></label>' +
+    '<div class="btns"><button class="btn" type="button" id="bPaste">' + ICON.clip + 'Paste from clipboard</button><button class="btn" type="button" id="bLoc">' + ICON.loc + "Use my location</button></div>" +
+    '<div class="pin-status" id="pinStatus">No location yet.</div>' +
+    '<div class="g2">' + f("lat", "Latitude") + f("lon", "Longitude") + "</div>" +
+    '<h3 class="sec">Contract</h3>' +
+    '<label class="fld"><span>Name</span><input data-f="name" autocomplete="off" value="' + esc(p.name ?? "") + '" placeholder="Customer and site"></label>' +
+    '<label class="fld"><span>Support tier</span><select data-f="tier">' + S.tiers.map((t) => '<option value="' + esc(t.name) + '"' + (t.name === p.tier ? " selected" : "") + ">" + esc(t.name) + "</option>").join("") + "</select></label>" +
+    '<h3 class="sec">Estimate from project type</h3><p class="note" style="margin:0 0 8px">Optional. Choose a project type and size, then tap Estimate to fill the work and revenue fields below. Anything you change afterward overrides the estimate.</p>' +
+    '<label class="fld"><span>Project type</span><select data-f="ptype"><option value="">Not estimating</option>' + DEFAULT_LIBRARY.types.map((t) => '<option value="' + esc(t.name) + '"' + (t.name === p.ptype ? " selected" : "") + ">" + esc(t.name) + "</option>").join("") + "</select></label>" +
+    '<div class="g2"><label class="fld"><span id="sizeLbl">Size</span><input data-f="psize" inputmode="decimal" autocomplete="off" value="' + esc(p.psize ?? "") + '"></label><label class="fld"><span>Complexity (1 = typical)</span><input data-f="cx" inputmode="decimal" autocomplete="off" value="' + esc(p.cx ?? "") + '" placeholder="1"></label></div>' +
+    '<div class="btns"><button class="btn" type="button" id="bEst">Estimate hours and value</button></div><div class="pin-status" id="estStatus" style="display:none"></div>' +
+    '<h3 class="sec">Work per year</h3>' +
+    '<div class="g2">' + f("mech", "Mechanical hours") + f("ctrl", "Controls hours") + f("pm", "PM visits") + f("corr", "Corrective visits") + "</div>" + f("calls", "After-hours call-outs") +
+    '<h3 class="sec">Money per year</h3>' +
+    '<div class="g2">' + f("rev", "Contract revenue ($)") + f("other", "Parts, monitoring, tools ($)") + "</div>" +
+    '<h3 class="sec">Optional</h3>' +
+    '<div class="g2">' + f("rfp", "RFP on-site response (hrs)") + '<label class="fld"><span>24/7 field coverage</span><select data-f="ah"><option value="">Tier default</option><option value="Yes"' + (p.ah === "Yes" ? " selected" : "") + '>Required</option><option value="No"' + (p.ah === "No" ? " selected" : "") + ">Not required</option></select></label></div>" +
+    f("strat", "Strategic adjustment (-10 to +10 points)") +
+    '<label class="fld"><span>Notes</span><textarea data-f="notes" rows="2">' + esc(p.notes ?? "") + "</textarea></label>";
+  const foot = '<div class="preview" id="prev"></div><div id="formErr" class="note" style="color:var(--stop)"></div><div class="btns" style="margin:8px 0 0"><button class="btn pri block" type="button" id="bSave">' + (isNew ? "Save pursuit" : "Save changes") + "</button></div>";
+  sheetOpen(isNew ? "Drop a pin" : "Edit pursuit", body, foot);
+  const val = (k) => { const el = document.querySelector('[data-f="' + k + '"]'); return el ? el.value.trim() : ""; };
+  const numv = (k) => { const v = val(k); return v === "" || isNaN(Number(v)) ? null : Number(v); };
+  const draft = () => ({ ...p, name: val("name"), tier: val("tier"), lat: numv("lat"), lon: numv("lon"), mech: numv("mech"), ctrl: numv("ctrl"), pm: numv("pm"), corr: numv("corr"), calls: numv("calls"), rev: numv("rev"), other: numv("other"), rfp: numv("rfp"), ah: val("ah"), strat: numv("strat"), notes: val("notes"), ptype: val("ptype"), psize: numv("psize"), cx: numv("cx") });
+  const setStatus = (cls, msg) => { const el = $("pinStatus"); el.className = "pin-status " + cls; el.textContent = msg; };
+  const preview = () => {
+    const d = draft(), r = evalPursuit(S, d), c = recCls(r.rec);
+    $("prev").innerHTML = '<span class="big chip ' + c + '" style="font-size:22px;padding:4px 10px">' + REC[r.rec] + '</span><div><p>' + (r.ok ? "Score " + Math.round(r.score) + ", from " + esc(r.office) + ", " + r.hrs.toFixed(1) + " hr drive" : "Add a location to screen this site.") + "</p>" + (r.ok ? lampsHTML(r) : "") + "</div>";
+    if (r.ok && has(d.lat)) setStatus("ok", "Pin set at " + d.lat.toFixed(5) + ", " + d.lon.toFixed(5) + ". Nearest office: " + r.nearest + ".");
+    else if (!has(d.lat)) setStatus("", "No location yet.");
+  };
+  const applyLoc = (txt) => {
+    const res = parseLocation(txt); if (!res) return;
+    if (res.error === "short") { setStatus("bad", "That’s a short link, so it has no coordinates inside. In the map app, tap the pin and copy its coordinates (or share a full link), then paste here."); return; }
+    if (res.error) { setStatus("bad", "Couldn’t find coordinates in that text. Paste a map link or numbers like 38.6982, -90.1561."); return; }
+    document.querySelector('[data-f="lat"]').value = res.lat; document.querySelector('[data-f="lon"]').value = res.lon;
+    preview(); const el = $("pinStatus"); el.textContent = "From a " + res.source + ": " + res.lat + ", " + res.lon + ". " + el.textContent.replace(/^Pin set at [^.]*\.\s*/, "");
+  };
+  const sizeLabel = () => { const t = DEFAULT_LIBRARY.types.find((x) => x.name === val("ptype")); $("sizeLbl").textContent = t ? "Size (" + t.unit + ")" : "Size"; };
+  const estStatus = (cls, msg) => { const el = $("estStatus"); el.style.display = "block"; el.className = "pin-status " + cls; el.textContent = msg; };
+  $("bEst").addEventListener("click", () => {
+    const d = draft(), e = estimateProject(S, { type: d.ptype, size: d.psize, cx: d.cx, tier: d.tier });
+    if (!e) { estStatus("bad", "Choose a project type and enter a size greater than zero."); return; }
+    const set = (k, v) => { document.querySelector('[data-f="' + k + '"]').value = v; };
+    set("mech", Math.round(e.mech)); set("ctrl", Math.round(e.ctrl)); set("pm", Math.round(e.pm)); set("corr", Math.round(e.corr)); set("calls", Math.round(e.calls)); set("other", Math.round(e.other / 10) * 10);
+    let msg = "Estimated from " + d.ptype + ", " + Number(d.psize).toLocaleString("en-US") + " " + e.unit + ": " + Math.round(e.mech) + " mechanical and " + Math.round(e.ctrl) + " controls hours a year.";
+    if (e.value !== null) {
+      set("rev", Math.round(e.value / 100) * 100);
+      const fmtU = (x) => x < 10 ? "$" + x.toFixed(2) : "$" + Math.round(x).toLocaleString("en-US");
+      msg += " Agreement value about " + money(e.value) + " a year (" + fmtU(e.perUnit) + " per " + e.unit + ", " + e.bench + " the typical " + fmtU(e.lo) + " to " + fmtU(e.hi) + ").";
+    } else msg += " This tier isn’t priced as an agreement, so enter revenue yourself.";
+    estStatus("ok", msg); preview();
+  });
+  $("sizeLbl") && document.querySelector('[data-f="ptype"]').addEventListener("change", sizeLabel); sizeLabel();
+  $("loc").addEventListener("input", () => applyLoc($("loc").value));
+  $("bPaste").addEventListener("click", async () => {
+    try { const t = await navigator.clipboard.readText(); $("loc").value = t; applyLoc(t); }
+    catch (e) { setStatus("bad", "Clipboard access was blocked. Press and hold in the box above and choose Paste."); $("loc").focus(); }
+  });
+  $("bLoc").addEventListener("click", () => {
+    if (!navigator.geolocation) { setStatus("bad", "Location isn’t available here. Paste a map link instead."); return; }
+    setStatus("", "Finding your location…");
+    navigator.geolocation.getCurrentPosition((pos) => {
+      document.querySelector('[data-f="lat"]').value = +pos.coords.latitude.toFixed(6); document.querySelector('[data-f="lon"]').value = +pos.coords.longitude.toFixed(6); preview();
+    }, () => setStatus("bad", "Location was blocked or unavailable. Paste a map link instead."), { enableHighAccuracy: true, timeout: 12000 });
+  });
+  document.querySelectorAll("#sheetBody [data-f]").forEach((el) => { el.addEventListener("input", preview); el.addEventListener("change", preview); });
+  $("bSave").addEventListener("click", async () => {
+    const d = draft(), err = $("formErr");
+    if (!d.name) { err.textContent = "Enter a name for this pursuit."; return; }
+    if (!has(d.lat) || !has(d.lon)) { err.textContent = "Add a location: paste a map link or coordinates."; return; }
+    if (Math.abs(d.lat) > 90 || Math.abs(d.lon) > 180) { err.textContent = "Those coordinates are out of range."; return; }
+    err.textContent = ""; $("bSave").disabled = true; $("bSave").textContent = "Saving…";
+    const out = { ...d }; delete out.id;
+    out.createdAt = existing ? num(existing.createdAt) : Date.now(); out.createdBy = existing ? (existing.createdBy ?? null) : (ENV.me && ENV.me.id) || null; out.updatedAt = Date.now(); out.sentAt = null;
+    try { const id = await savePursuit({ ...out, id: existing ? existing.id : null }); sheetClose(); toast(isNew ? "Pursuit saved" : "Changes saved"); setTimeout(() => { if (R && R.results.find((x) => x.p.id === id)) openDetail(id); }, 350); }
+    catch (e) { $("bSave").disabled = false; $("bSave").textContent = isNew ? "Save pursuit" : "Save changes"; err.textContent = e && e.code === "invalid_argument" ? "You have view-only access, so this can’t be saved. Ask the owner for edit access." : "Couldn’t save. Check your connection and try again."; }
+  });
+  preview();
+}
+$("fab").addEventListener("click", () => { if (!ENV.canWrite) { toast("You have view-only access."); return; } openForm(null); });
+
+/* ---------- map (schematic, no basemap) ---------- */
+function vMap() {
+  const offs = S.offices.filter((o) => o.name && has(o.lat) && has(o.lon));
+  const pts = R.results.filter((r) => has(r.p.lat) && has(r.p.lon));
+  if (!offs.length && !pts.length) return '<div class="empty"><h2>Nothing to plot</h2><p>Add offices in Setup and drop a pin to see them here.</p></div>';
+  const A = S.A, tierT = (n) => ((S.tiers.find((t) => t.name === n) || { target: 2 }).target);
+  const ringT = mapRing === "D" ? tierT("D - Premier") : tierT("C - Preferred");
+  const ringMi = Math.max(0, (ringT - A.mobil) * A.speed / A.circ);   // straight-line miles
+  let sel = [...offs.map((o) => ({ lat: num(o.lat), lon: num(o.lon) })), ...pts.map((r) => ({ lat: num(r.p.lat), lon: num(r.p.lon) }))];
+  if (mapFocus !== "all") { const fo = offs.find((o) => o.name === mapFocus); if (fo) { const k = ringMi * 1.35 / 69; sel = [{ lat: num(fo.lat) + k, lon: num(fo.lon) - k / Math.cos(rad(num(fo.lat))) }, { lat: num(fo.lat) - k, lon: num(fo.lon) + k / Math.cos(rad(num(fo.lat))) }]; } }
+  const lat0 = sel.reduce((a, s) => a + s.lat, 0) / sel.length, kx = Math.cos(rad(lat0)) * 69.17, ky = 69.05;
+  const X = (lon) => lon * kx, Y = (lat) => -lat * ky;
+  const xs = sel.map((s) => X(s.lon)), ys = sel.map((s) => Y(s.lat));
+  let x0 = Math.min(...xs), x1 = Math.max(...xs), y0 = Math.min(...ys), y1 = Math.max(...ys);
+  const padMi = Math.max(40, (x1 - x0 + y1 - y0) * 0.09); x0 -= padMi; x1 += padMi; y0 -= padMi; y1 += padMi;
+  const W = 360, spanX = x1 - x0, spanY = y1 - y0, sc = Math.min(W / spanX, 460 / spanY), H = Math.max(200, spanY * sc), offX = (W - spanX * sc) / 2;
+  const px = (lon) => offX + (X(lon) - x0) * sc, py = (lat) => (Y(lat) - y0) * sc;
+  let svg = '<svg viewBox="0 0 ' + W + " " + Math.round(H) + '" role="img" aria-label="Schematic map of offices, response rings and pursuits"><rect width="' + W + '" height="' + Math.round(H) + '" fill="var(--paper)"/>';
+  offs.forEach((o) => { svg += '<circle cx="' + px(num(o.lon)).toFixed(1) + '" cy="' + py(num(o.lat)).toFixed(1) + '" r="' + (ringMi * sc).toFixed(1) + '" fill="var(--accent-soft)" fill-opacity=".55" stroke="var(--accent)" stroke-width="1" stroke-dasharray="4 3"/>'; });
+  offs.forEach((o) => { const cx = px(num(o.lon)), cy = py(num(o.lat)); const left = cx > W - 100; svg += '<rect x="' + (cx - 5).toFixed(1) + '" y="' + (cy - 5).toFixed(1) + '" width="10" height="10" fill="var(--ink)"/><text x="' + (left ? cx - 9 : cx + 9).toFixed(1) + '" y="' + (cy - 8).toFixed(1) + '" text-anchor="' + (left ? "end" : "start") + '" font-size="11" font-weight="600" fill="var(--ink)" paint-order="stroke" stroke="var(--paper)" stroke-width="3">' + esc(o.name) + "</text>"; });
+  const col = { "GO": "var(--go)", "CONDITIONAL": "var(--warn)", "NO-GO": "var(--stop)", "INCOMPLETE DATA": "var(--idle)" };
+  pts.forEach((r) => {
+    const cx = px(num(r.p.lon)), cy = py(num(r.p.lat));
+    svg += '<g data-open="' + esc(r.p.id) + '" tabindex="0" role="button" aria-label="' + esc(r.p.name) + ', ' + REC[r.rec] + '" style="cursor:pointer"><circle cx="' + cx.toFixed(1) + '" cy="' + cy.toFixed(1) + '" r="14" fill="transparent"/><circle cx="' + cx.toFixed(1) + '" cy="' + cy.toFixed(1) + '" r="6.5" fill="' + col[r.rec] + '" stroke="var(--surface)" stroke-width="2"/></g>';
+  });
+  svg += "</svg>";
+  const opts = '<option value="all"' + (mapFocus === "all" ? " selected" : "") + ">Show everything</option>" + offs.map((o) => '<option value="' + esc(o.name) + '"' + (mapFocus === o.name ? " selected" : "") + ">Zoom to " + esc(o.name) + "</option>").join("");
+  return '<div class="g2"><label class="fld"><span>View</span><select id="mapFocus">' + opts + '</select></label><label class="fld"><span>Response rings</span><select id="mapRing"><option value="D"' + (mapRing === "D" ? " selected" : "") + ">Premier, " + tierT("D - Premier") + " hr</option><option value=\"C\"" + (mapRing === "C" ? " selected" : "") + ">Preferred, " + tierT("C - Preferred") + " hr</option></select></label></div>" +
+    '<div class="mapbox">' + svg + "</div>" +
+    '<div class="legend"><span><i style="background:var(--ink);border-radius:0"></i>Office</span><span><i style="background:var(--go)"></i>Go</span><span><i style="background:var(--warn)"></i>Conditional</span><span><i style="background:var(--stop)"></i>No-go</span><span><i style="background:var(--idle)"></i>Incomplete</span></div>' +
+    '<p class="note">Schematic only, with no street map. Rings show how far a technician can drive and still meet the response clock.' + (mapFocus === "all" && offs.length > 1 ? ' Offices far apart look small here: choose “Zoom to” an office for detail.' : '') + ' Tap a dot to open it, then use Apple Maps or Google Maps for directions.</p>';
+}
+
+/* ---------- more: settings, send, QR, export ---------- */
+function vSetup() {
+  const esc2 = esc;
+  let h = '<h3 class="sec">Send results</h3>' +
+    '<label class="fld"><span>Your name</span><input id="setWho" autocomplete="name" value="' + esc2(ENV.who) + '" placeholder="So the office knows who sent it"></label>' +
+    '<label class="fld"><span>Send to (email)</span><input id="setTo" type="email" inputmode="email" autocomplete="email" value="' + esc2(ENV.sendTo) + '" placeholder="office@yourcompany.com"><small>Used by the Email option on the Send screen.</small></label>';
+  h += '<h3 class="sec">Offices</h3>' + (S.offices.length ? '<div class="card-list">' + S.offices.map((o) => '<div><h4 style="margin:0 0 2px">' + esc2(o.name) + '</h4><span class="note" style="display:block;margin:0">' + num(o.mech) + " mechanics, " + num(o.ctrl) + " controls techs</span></div>").join("") + "</div>" : '<div class="empty">No offices are set up in this copy of the app.</div>');
+  h += '<h3 class="sec">How it screens</h3><p class="note">A pursuit passes four checks: it must be inside the response range of an office, the office must have capacity, there must be enough technicians for an on-call rotation, and the margin must clear the walk-away level. ' +
+    S.tiers.filter((t) => num(t.target) > 0).map((t) => esc2(t.name) + " needs a " + t.target + "-hour on-site response").join("; ") + ".</p>" +
+    '<p class="note">Offices and assumptions are set by the office and update when the app is republished. Settings as of ' + esc2(CONFIG.stamp || "") + ".</p>";
+  h += '<h3 class="sec">This app</h3><div class="btns"><button class="btn pri" type="button" id="bQR">Share this app (QR code)</button><button class="btn" type="button" id="bDl">Download my pursuits (CSV)</button></div>' +
+    '<div class="btns"><button class="btn danger" type="button" id="bClear">Delete all my pursuits</button></div>' +
+    '<p class="note">Pursuits are stored on this phone only. Send them to the office to keep them, since clearing browser data erases them.</p>';
+  return h;
+}
+function bindSetup() {
+  $("setWho").addEventListener("input", () => { ENV.who = $("setWho").value; persist(); });
+  $("setTo").addEventListener("input", () => { ENV.sendTo = $("setTo").value.trim(); persist(); });
+  $("bQR").addEventListener("click", openQR);
+  $("bDl").addEventListener("click", () => { const m = buildMessage(sortedPursuits()); downloadFile("pursuits_for_master_workbook.csv", m.csv); });
+  const c = $("bClear"); let armed = false;
+  c.addEventListener("click", () => {
+    if (!armed) { armed = true; c.textContent = "Tap again to delete everything"; c.classList.add("armed"); setTimeout(() => { armed = false; c.textContent = "Delete all my pursuits"; c.classList.remove("armed"); }, 3500); return; }
+    S.pursuits = []; persist(); recompute(); toast("All pursuits deleted");
+  });
+}
+const MASTER_HEAD = ["Opportunity / customer", "Support tier", "Site latitude", "Site longitude", "Mechanical hrs/yr", "Controls hrs/yr", "PM visits/yr", "Corrective visits/yr (business hrs)", "After-hours call-outs/yr", "(Optional) RFP on-site response requirement (hrs)", "(Optional) 24/7 field coverage required?", "Annual contract revenue ($)", "Parts, monitoring & tool costs ($/yr)", "Strategic adjustment (-10 to +10 pts)", "Notes", "Project type (for the estimate)", "Project size (unit shown on Project Types)", "(Optional) Complexity factor (1 = typical)"];
+function buildMessage(list) {
+  const rows = list.map((p) => [p.name, p.tier, p.lat, p.lon, p.mech, p.ctrl, p.pm, p.corr, p.calls, p.rfp, p.ah, p.rev, p.other, p.strat, p.notes, p.ptype, p.psize, p.cx]);
+  const q = (v) => { const t = String(v ?? ""); return /[",\n]/.test(t) ? '"' + t.replace(/"/g, '""') + '"' : t; };
+  const csv = [MASTER_HEAD, ...rows].map((r) => r.map(q).join(",")).join("\n");
+  const tsv = rows.map((r) => r.map((v) => String(v ?? "").replace(/[\t\r\n]+/g, " ")).join("\t")).join("\n");
+  const lines = list.map((p, i) => { const r = R.results.find((x) => x.p.id === p.id); return (i + 1) + ". " + p.name + (r ? ": " + REC[r.rec] + " (score " + Math.round(r.score) + ")" + (r.ok ? ", from " + r.office + ", " + r.hrs.toFixed(1) + " hr drive" : "") : ""); });
+  const who = ENV.who.trim();
+  return {
+    subject: "Pursuit screen: " + list.length + " pursuit" + (list.length > 1 ? "s" : "") + (who ? " from " + who : ""), csv,
+    text: "Pursuits" + (who ? " from " + who : "") + " (" + list.length + ")\n\n" + lines.join("\n") + "\n\nRows for the master workbook (Opportunities tab, paste at column B):\n" + tsv
+  };
+}
+function downloadFile(name, text) {
+  try { const b = new Blob([text], { type: "text/csv" }), a = document.createElement("a"); a.href = URL.createObjectURL(b); a.download = name; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000); }
+  catch (e) { toast("Download isn’t available here. Use Send, then Copy rows."); }
+}
+function openSend(list) {
+  if (!list.length) { toast("Nothing to send"); return; }
+  const canShare = typeof navigator.share === "function";
+  const body = '<p style="margin:0 0 12px"><b>' + list.length + " pursuit" + (list.length > 1 ? "s" : "") + "</b> to send: " + esc(list.map((p) => p.name).join("; ")) + "</p>" +
+    '<label class="fld"><span>Your name</span><input id="sWho" autocomplete="name" value="' + esc(ENV.who) + '"></label>' +
+    '<label class="fld"><span>Send to (email)</span><input id="sTo" type="email" inputmode="email" autocomplete="email" value="' + esc(ENV.sendTo) + '" placeholder="office@yourcompany.com"></label>' +
+    '<div class="btns" style="flex-direction:column">' + (canShare ? '<button class="btn pri block" type="button" id="sShare">Share (Messages, Teams, email, any app)</button>' : "") +
+    '<button class="btn ' + (canShare ? "" : "pri ") + 'block" type="button" id="sMail">Email</button><button class="btn block" type="button" id="sCopy">Copy rows</button></div>' +
+    '<p class="note">The message lists each result and includes rows that paste straight into the master workbook. Email opens your mail app, so tap Mark as sent after you send it.</p>' +
+    '<div class="btns"><button class="btn block" type="button" id="sMark">Mark as sent</button></div>';
+  sheetOpen("Send to the office", body, "");
+  const sync = () => { ENV.who = $("sWho").value; ENV.sendTo = $("sTo").value.trim(); persist(); return buildMessage(list); };
+  const sh = $("sShare");
+  if (sh) sh.addEventListener("click", async () => { const m = sync(); try { await navigator.share({ title: m.subject, text: m.text }); markSent(list); sheetClose(); toast("Marked as sent"); } catch (e) { if (!e || e.name !== "AbortError") toast("Sharing isn’t available. Try Email or Copy rows."); } });
+  $("sMail").addEventListener("click", () => { const m = sync(); window.location.href = "mailto:" + encodeURIComponent(ENV.sendTo).replace(/%40/g, "@") + "?subject=" + encodeURIComponent(m.subject) + "&body=" + encodeURIComponent(m.text); toast("Your mail app should open. Tap Mark as sent after sending."); });
+  $("sCopy").addEventListener("click", async () => { const m = sync(); try { await navigator.clipboard.writeText(m.text); toast("Copied. Paste it into a message or email."); } catch (e) { toast("Couldn’t copy. Long-press to select instead."); } });
+  $("sMark").addEventListener("click", () => { markSent(list); sheetClose(); toast("Marked as sent"); });
+}
+function openQR() {
+  const url = location.origin + location.pathname;
+  let inner;
+  if (/^https?:/.test(location.protocol) && typeof qrcode === "function") {
+    const qr = qrcode(0, "M"); qr.addData(url); qr.make();
+    inner = '<div style="background:#fff;padding:12px;max-width:320px;margin:0 auto">' + qr.createSvgTag({ cellSize: 6, margin: 2, scalable: true }) + '</div><p class="note" style="text-align:center;word-break:break-all">' + esc(url) + "</p><p class=\"note\">Anyone who scans this opens the app in their browser. Take a screenshot to print or send it.</p>";
+  } else inner = '<div class="banner">The QR code appears once this page is hosted at a web address. Open the hosted link, then come back here.</div>';
+  sheetOpen("Share this app", inner, "");
+}
+
+/* ============================ boot ============================ */
+loadLocal(); setSync(); recompute();
+</script>
+</body>
+</html>
