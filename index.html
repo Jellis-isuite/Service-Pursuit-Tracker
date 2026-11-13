@@ -3114,12 +3114,13 @@ function buildMessage(list) {
   const rows = list.map((p) => [p.name, p.tier, p.lat, p.lon, p.mech, p.ctrl, p.pm, p.corr, p.calls, p.rfp, p.ah, p.rev, p.other, p.strat, p.notes, p.ptype, p.psize, p.cx]);
   const q = (v) => { const t = String(v ?? ""); return /[",\n]/.test(t) ? '"' + t.replace(/"/g, '""') + '"' : t; };
   const csv = [MASTER_HEAD, ...rows].map((r) => r.map(q).join(",")).join("\n");
-  const tsv = rows.map((r) => r.map((v) => String(v ?? "").replace(/[\t\r\n]+/g, " ")).join("\t")).join("\n");
-  const lines = list.map((p, i) => { const r = R.results.find((x) => x.p.id === p.id); return (i + 1) + ". " + p.name + (r ? ": " + REC[r.rec] + " (score " + Math.round(r.score) + ")" + (r.ok ? ", from " + r.office + ", " + r.hrs.toFixed(1) + " hr drive" : "") : ""); });
+  const clean = (v) => String(v ?? "").replace(/[|\t\r\n]+/g, " ").trim();
+  const pipes = rows.map((r) => "PURSUIT|" + r.map(clean).join("|"));
+  const lines = list.map((p, i) => { const r = R.results.find((x) => x.p.id === p.id); return (i + 1) + ". " + p.name + (r ? ": " + REC[r.rec] + (r.rec === "INCOMPLETE DATA" ? "" : " (score " + Math.round(r.score) + ")") + (r.ok ? ", from " + r.office + ", " + r.hrs.toFixed(1) + " hr drive" : "") : ""); });
   const who = ENV.who.trim();
   return {
     subject: "Pursuit screen: " + list.length + " pursuit" + (list.length > 1 ? "s" : "") + (who ? " from " + who : ""), csv,
-    text: "Pursuits" + (who ? " from " + who : "") + " (" + list.length + ")\n\n" + lines.join("\n") + "\n\nRows for the master workbook (Opportunities tab, paste at column B):\n" + tsv
+    text: "Pursuits" + (who ? " from " + who : "") + " (" + list.length + ")\n\n" + lines.join("\n") + "\n\nFOR THE MASTER WORKBOOK: copy this whole message into the Inbox sheet, cell A6. Only the PURSUIT lines below are read.\n" + pipes.join("\n")
   };
 }
 function downloadFile(name, text) {
@@ -3134,12 +3135,12 @@ function openSend(list) {
     '<label class="fld"><span>Send to (email)</span><input id="sTo" type="email" inputmode="email" autocomplete="email" value="' + esc(ENV.sendTo) + '" placeholder="office@yourcompany.com"></label>' +
     '<div class="btns" style="flex-direction:column">' + (canShare ? '<button class="btn pri block" type="button" id="sShare">Share (Messages, Teams, email, any app)</button>' : "") +
     '<button class="btn ' + (canShare ? "" : "pri ") + 'block" type="button" id="sMail">Email</button><button class="btn block" type="button" id="sCopy">Copy rows</button></div>' +
-    '<p class="note">The message lists each result and includes rows that paste straight into the master workbook. Email opens your mail app, so tap Mark as sent after you send it.</p>' +
+    '<p class="note">The message lists each result, plus one PURSUIT line per pursuit for the master workbook&rsquo;s Inbox sheet. Share also attaches a CSV file when the app you pick allows it. Email opens your mail app, so tap Mark as sent after you send it.</p>' +
     '<div class="btns"><button class="btn block" type="button" id="sMark">Mark as sent</button></div>';
   sheetOpen("Send to the office", body, "");
   const sync = () => { ENV.who = $("sWho").value; ENV.sendTo = $("sTo").value.trim(); persist(); return buildMessage(list); };
   const sh = $("sShare");
-  if (sh) sh.addEventListener("click", async () => { const m = sync(); try { await navigator.share({ title: m.subject, text: m.text }); markSent(list); sheetClose(); toast("Marked as sent"); } catch (e) { if (!e || e.name !== "AbortError") toast("Sharing isn’t available. Try Email or Copy rows."); } });
+  if (sh) sh.addEventListener("click", async () => { const m = sync(); try { const data = { title: m.subject, text: m.text }; try { const f = new File([m.csv], "pursuits.csv", { type: "text/csv" }); if (navigator.canShare && navigator.canShare({ files: [f] })) data.files = [f]; } catch (e2) { /* text only */ } await navigator.share(data); markSent(list); sheetClose(); toast("Marked as sent"); } catch (e) { if (!e || e.name !== "AbortError") toast("Sharing isn’t available. Try Email or Copy rows."); } });
   $("sMail").addEventListener("click", () => { const m = sync(); window.location.href = "mailto:" + encodeURIComponent(ENV.sendTo).replace(/%40/g, "@") + "?subject=" + encodeURIComponent(m.subject) + "&body=" + encodeURIComponent(m.text); toast("Your mail app should open. Tap Mark as sent after sending."); });
   $("sCopy").addEventListener("click", async () => { const m = sync(); try { await navigator.clipboard.writeText(m.text); toast("Copied. Paste it into a message or email."); } catch (e) { toast("Couldn’t copy. Long-press to select instead."); } });
   $("sMark").addEventListener("click", () => { markSent(list); sheetClose(); toast("Marked as sent"); });
