@@ -2952,6 +2952,8 @@ function openForm(existing) {
     '<h3 class="sec">Location</h3>' +
     '<label class="fld"><span>Paste a map link or coordinates</span><textarea id="loc" rows="2" placeholder="Apple Maps or Google Maps link, or 38.6982, -90.1561"></textarea><small>Drop a pin, tap Share, copy the link, and paste it here. Short links (maps.app.goo.gl) carry no coordinates; copy the pin’s coordinates instead.</small></label>' +
     '<div class="btns"><button class="btn" type="button" id="bPaste">' + ICON.clip + 'Paste from clipboard</button><button class="btn" type="button" id="bLoc">' + ICON.loc + "Use my location</button></div>" +
+    '<label class="fld"><span>Or type the site address</span><input id="addr" autocomplete="street-address" placeholder="123 Main St, Granite City, IL"></label>' +
+    '<div class="btns"><button class="btn" type="button" id="bAddr">Find address</button></div><div id="addrRes"></div>' +
     '<div class="pin-status" id="pinStatus">No location yet.</div>' +
     '<div class="g2">' + f("lat", "Latitude") + f("lon", "Longitude") + "</div>" +
     '<h3 class="sec">Contract</h3>' +
@@ -2983,7 +2985,7 @@ function openForm(existing) {
   };
   const applyLoc = (txt) => {
     const res = parseLocation(txt); if (!res) return;
-    if (res.error === "short") { setStatus("bad", "That’s a short link, so it has no coordinates inside. In the map app, tap the pin and copy its coordinates (or share a full link), then paste here."); return; }
+    if (res.error === "short") { setStatus("bad", "That’s a short link, so it has no coordinates inside. Type the site address above and tap Find address, tap Use my location if you’re at the site, or copy the pin’s coordinates from the map app."); return; }
     if (res.error) { setStatus("bad", "Couldn’t find coordinates in that text. Paste a map link or numbers like 38.6982, -90.1561."); return; }
     document.querySelector('[data-f="lat"]').value = res.lat; document.querySelector('[data-f="lon"]').value = res.lon;
     preview(); const el = $("pinStatus"); el.textContent = "From a " + res.source + ": " + res.lat + ", " + res.lon + ". " + el.textContent.replace(/^Pin set at [^.]*\.\s*/, "");
@@ -3015,6 +3017,22 @@ function openForm(existing) {
     navigator.geolocation.getCurrentPosition((pos) => {
       document.querySelector('[data-f="lat"]').value = +pos.coords.latitude.toFixed(6); document.querySelector('[data-f="lon"]').value = +pos.coords.longitude.toFixed(6); preview();
     }, () => setStatus("bad", "Location was blocked or unavailable. Paste a map link instead."), { enableHighAccuracy: true, timeout: 12000 });
+  });
+  $("bAddr").addEventListener("click", async () => {
+    const q = $("addr").value.trim(); if (!q) return;
+    const box = $("addrRes"); box.innerHTML = '<p class="note">Searching…</p>';
+    try {
+      const r = await fetch("https://nominatim.openstreetmap.org/search?format=jsonv2&limit=4&countrycodes=us&q=" + encodeURIComponent(q));
+      if (!r.ok) throw new Error("http");
+      const list = await r.json();
+      if (!list.length) { box.innerHTML = '<p class="note">No match. Add the city and state, or paste a map link instead.</p>'; return; }
+      box.innerHTML = list.map((x, i) => '<button type="button" class="btn block" style="justify-content:flex-start;text-align:left;margin-bottom:6px;height:auto;padding:10px 14px" data-pick="' + i + '">' + esc(x.display_name) + "</button>").join("") + '<p class="note">Address search by OpenStreetMap.</p>';
+      box.querySelectorAll("[data-pick]").forEach((b) => b.addEventListener("click", () => {
+        const x = list[Number(b.dataset.pick)];
+        document.querySelector('[data-f="lat"]').value = +Number(x.lat).toFixed(6); document.querySelector('[data-f="lon"]').value = +Number(x.lon).toFixed(6);
+        box.innerHTML = ""; preview();
+      }));
+    } catch (e) { box.innerHTML = '<p class="note">Address search isn’t available right now (offline or blocked). Paste a map link or use your location.</p>'; }
   });
   document.querySelectorAll("#sheetBody [data-f]").forEach((el) => { el.addEventListener("input", preview); el.addEventListener("change", preview); });
   $("bSave").addEventListener("click", async () => {
